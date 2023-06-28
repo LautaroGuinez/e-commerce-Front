@@ -64,7 +64,7 @@ const Register = () => {
             onChange={(e) => setLastname(e.target.value)}
             required
             id="outlined-required"
-            label="LastName"
+            label="Last Name"
             defaultValue=""
           />
         </div>
