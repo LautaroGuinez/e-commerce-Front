@@ -38,6 +38,7 @@ const fakeData = () => {
       description: generateProductDescription(product),
       price: generateRandomPrice(),
       image: img[Math.floor(Math.random() * 6)],
+      quantity: Math.ceil(Math.random() *10)
     })
   );
   return electronicProductsWithDescription;
