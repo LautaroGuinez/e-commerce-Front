@@ -13,31 +13,6 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                height: "80vh",
-              }}
-            >
-              <Link to="/login">
-                <Button variant="contained" color="primary">
-                  Login
-                </Button>
-              </Link>
-
-              <Link to="/register">
-                <Button variant="contained" color="primary">
-                  Registro
-                </Button>
-              </Link>
-            </div>
-          }
-        ></Route>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
       </Routes>

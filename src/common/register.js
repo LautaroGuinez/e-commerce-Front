@@ -33,7 +33,7 @@ const Register = () => {
           <TextField
             required
             id="outlined-required"
-            label="LastName"
+            label="Last Name"
             defaultValue=""
           />
         </div>

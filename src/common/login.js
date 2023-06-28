@@ -31,7 +31,7 @@ const Login = () => {
               <TextField
                 required
                 id="outlined-required"
-                label="Pasworld"
+                label="Password"
                 defaultValue=""
               />
             </div>
