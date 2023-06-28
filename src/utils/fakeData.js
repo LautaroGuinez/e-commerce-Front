@@ -1,3 +1,4 @@
+const img = require("./img");
 // Genera precio ficticio del producto
 function generateRandomPrice() {
   return (Math.random() * (1000 - 10) + 10).toFixed(2);
@@ -6,11 +7,6 @@ function generateRandomPrice() {
 // Genera descripción ficticia del producto
 function generateProductDescription(productName) {
   return `This is a description of the ${productName}. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fringilla nulla et mi dignissim dignissim. Nulla consequat turpis id purus lobortis dapibus. Morbi luctus risus ut turpis pharetra, ac venenatis ipsum volutpat. Proin id volutpat elit, eu aliquet lacus. Vestibulum luctus leo et diam dapibus aliquet. Quisque lacinia cursus justo, eu eleifend ex aliquet non. Donec in efficitur elit, in euismod mi. Sed dapibus purus id lobortis pulvinar. Aenean ut varius mauris. Nullam quis varius leo, nec luctus lectus. Nunc fringilla justo sed arcu faucibus, sed lobortis orci volutpat. Cras vitae lectus quis tellus mattis feugiat. Vivamus convallis mauris non sapien laoreet, sed convallis est fringilla. Sed nec turpis ac elit euismod rhoncus a et dui.`;
-}
-// Genera URL de imagen aleatoria
-function generateProductImageURL(productName) {
-  const formattedProductName = productName.toLowerCase().replace(/\s+/g, "-");
-  return `https://example.com/images/${formattedProductName}.jpg`;
 }
 const fakeData = () => {
   const electronicProducts = [
@@ -41,7 +37,7 @@ const fakeData = () => {
       name: product,
       description: generateProductDescription(product),
       price: generateRandomPrice(),
-      image: generateProductImageURL(product),
+      image: img[Math.floor(Math.random() * 6)],
     })
   );
   return electronicProductsWithDescription;

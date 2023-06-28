@@ -16,7 +16,7 @@ function App() {
         </Button>
       </Link>
       <Routes>
-        <Route path="/register" element={<SearchBar />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </div>
   );
