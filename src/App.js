@@ -5,10 +5,11 @@ import { Link } from "react-router-dom";
 import fakeData from "./utils/fakeData";
 import Register from "./common/register";
 import Login from "./common/login";
+import Cars from "./common/cars"
 import Navbar from "./components/Navbar";
 
 function App() {
-  console.log(fakeData());
+ 
   return (
     <>
       <Navbar />
@@ -40,6 +41,7 @@ function App() {
         ></Route>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/Cars" element={<Cars />}/>
       </Routes>
     </>
   );
