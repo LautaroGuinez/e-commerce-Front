@@ -1,0 +1,32 @@
+.conteinerProducts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+
+.card {
+  max-width: 70%;
+}
+
+.cardContend {
+  text-align: center;
+  display: flex;
+  gap: 50px;
+}
+img {
+  max-height: 250px;
+}
+
+.description {
+  font-size: 24px;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: bold;
+}
+.dataPrice {
+  font-size: 20px;
+  font-weight: bold;
+}
