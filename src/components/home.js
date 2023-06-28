@@ -6,7 +6,6 @@ import { Box } from "@mui/material";
 const Home = () => {
   return (
     <>
-      <Navbar />
       <Box
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
