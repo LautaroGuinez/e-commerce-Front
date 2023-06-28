@@ -1,20 +1,21 @@
 import React from "react";
-import { Button } from "@mui/material";
 import { Route, Routes } from "react-router";
-import { Link } from "react-router-dom";
-import fakeData from "./utils/fakeData";
+import Home from "./components/home";
+import ProductsCards from "./common/productsCards";
 import Register from "./common/register";
 import Login from "./common/login";
+import Cars from "./common/cars";
 import Navbar from "./components/Navbar";
 
 function App() {
-  console.log(fakeData());
   return (
     <>
-      <Navbar />
       <Routes>
+        <Route path="/" element={<Home />}></Route>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/product" element={<ProductsCards />} />
+        <Route path="/Cars" element={<Cars />} />
       </Routes>
     </>
   );

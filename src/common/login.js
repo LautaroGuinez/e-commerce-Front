@@ -33,6 +33,7 @@ const Login = () => {
                 id="outlined-required"
                 label="Password"
                 defaultValue=""
+                type="password"
               />
             </div>
           </Box>
