@@ -5,11 +5,13 @@ import { Link } from "react-router-dom";
 import fakeData from "./utils/fakeData";
 import Register from "./common/register";
 import Login from "./common/login";
+import Navbar from "./components/Navbar";
 
 function App() {
   console.log(fakeData());
   return (
     <>
+      <Navbar />
       <Routes>
         <Route
           path="/"
@@ -27,6 +29,7 @@ function App() {
                   Login
                 </Button>
               </Link>
+
               <Link to="/register">
                 <Button variant="contained" color="primary">
                   Registro
