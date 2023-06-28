@@ -7,11 +7,14 @@ import ProductsCards from "./common/productsCards";
 import fakeData from "./utils/fakeData";
 import Register from "./common/register";
 import Login from "./common/login";
+import Cars from "./common/cars"
+import Navbar from "./components/Navbar";
 
 function App() {
-  console.log(fakeData());
+ 
   return (
     <>
+      <Navbar />
       <Routes>
         <Route
           path="/"
@@ -40,6 +43,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/product" element={<ProductsCards />} />
+        <Route path="/Cars" element={<Cars />}/>
+
       </Routes>
     </>
   );
