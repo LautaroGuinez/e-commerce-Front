@@ -1,25 +1,47 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import axios from "axios";
 
 const Login = () => {
-  console.log("hola soy login");
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:3001/api/users/login", {
+        email: loginEmail,
+        password: loginPassword,
+      })
+      .then((response) => {
+        console.log("Inicio de sesión exitoso", response);
+        // Realiza las acciones necesarias después del inicio de sesión exitoso
+      })
+      .catch((error) => {
+        console.log("No se pudo iniciar sesión:", error);
+        // Maneja el error de inicio de sesión
+      });
+  };
+
   return (
-    <>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "80vh",
-        }}
-      >
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "80vh",
+      }}
+    >
+      <form onSubmit={handleLoginSubmit}>
         <Stack spacing={2} direction="row">
           <Box>
             <div>
               <TextField
+                value={loginEmail}
+                onChange={(e) => setLoginEmail(e.target.value)}
                 required
                 id="outlined-required"
                 label="Email"
@@ -29,18 +51,23 @@ const Login = () => {
             <br />
             <div>
               <TextField
+                value={loginPassword}
+                onChange={(e) => setLoginPassword(e.target.value)}
                 required
                 id="outlined-required"
-                label="Pasworld"
+                label="Password"
                 defaultValue=""
                 type="password"
               />
             </div>
           </Box>
-          <Button variant="contained">LOGIN</Button>
+          <Button type="submit" variant="contained">
+            LOGIN
+          </Button>
         </Stack>
-      </div>
-    </>
+      </form>
+    </div>
   );
 };
+
 export default Login;
