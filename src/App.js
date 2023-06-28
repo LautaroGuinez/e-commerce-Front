@@ -6,10 +6,13 @@ import fakeData from "./utils/fakeData";
 import Register from "./common/register";
 import Login from "./common/login";
 import Cars from "./common/cars"
+import Navbar from "./components/Navbar";
+
 function App() {
  
   return (
     <>
+      <Navbar />
       <Routes>
         <Route
           path="/"
@@ -27,6 +30,7 @@ function App() {
                   Login
                 </Button>
               </Link>
+
               <Link to="/register">
                 <Button variant="contained" color="primary">
                   Registro
