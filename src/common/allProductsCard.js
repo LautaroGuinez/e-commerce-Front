@@ -4,6 +4,7 @@ import "../styles/allproductos.css";
 const AllproductsCard = (prop) => {
   return (
     <div className="cardContainer">
+      
       <div className="posterContainer">
         <img src={prop.imgUrl} alt="Product Image" className="poster" />
       </div>
