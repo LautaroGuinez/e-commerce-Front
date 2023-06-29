@@ -4,11 +4,10 @@ import AllproductsCard from "../common/allProductsCard";
 
 import "../styles/contend.css";
 
-const Contend = () => {
-  const productos = fakedata();
+const Contend = ({ product }) => {
   return (
     <div className="products">
-      {productos.map((product, index) => (
+      {product.map((product, index) => (
         <AllproductsCard key={index} {...product} />
       ))}
     </div>
