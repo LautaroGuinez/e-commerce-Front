@@ -1,5 +1,3 @@
-import Login from "../common/login";
-import Register from "../common/register";
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -10,19 +8,21 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
-import Button1 from "@mui/material/Button";
 import Button from "@mui/material-next/Button";
-
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import { ButtonGroup } from "@mui/material";
+import CreateSvgIcon from "../styles/iconoNavbar";
+import SearchBar from "../common/searchBar";
+import iconoCarrito from "../styles/iconoCarrito";
 /* 
 Lo comentado va a servir para la funcionalidad despues
 Verificar que esta en uso o no, y descartar o descomentar
 */
+const iconoNavbar = CreateSvgIcon();
+
 const pages = ["My perfil", "Products", "Card"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = ["My Cars", "Logout"];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -42,12 +42,12 @@ function Navbar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-  const registro = true;
+  const registro = false;
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <div>{iconoNavbar}</div>
           <Typography
             variant="h6"
             noWrap
@@ -65,7 +65,6 @@ function Navbar() {
           >
             VGAMER
           </Typography>
-
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -96,7 +95,7 @@ function Navbar() {
               }}
             >
               {registro
-                ? console.log("Agregar funcionalidad")
+                ? iconoNavbar
                 : pages.map((page) => (
                     <MenuItem key={page} onClick={handleCloseNavMenu}>
                       <Typography textAlign="center">{page}</Typography>
@@ -125,7 +124,7 @@ function Navbar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {registro
-              ? console.log("Agregar funcionalidad")
+              ? iconoNavbar
               : pages.map((page) => (
                   <Button
                     key={page}
@@ -136,7 +135,8 @@ function Navbar() {
                   </Button>
                 ))}
           </Box>
-
+          {iconoCarrito()}
+          {SearchBar()}
           <Box sx={{ flexGrow: 0 }}>
             {registro ? (
               <>
