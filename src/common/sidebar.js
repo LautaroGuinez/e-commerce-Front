@@ -52,14 +52,14 @@ const Sidebar = () => {
 
   return (
     <>
-      <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
+      <Box sx={{ maxWidth: 700, flexGrow: 1 }}>
         <Paper
           square
           elevation={0}
           sx={{
             display: "flex",
             alignItems: "center",
-            height: 50,
+            height: 80,
             pl: 2,
             bgcolor: "background.default",
           }}
@@ -80,7 +80,7 @@ const Sidebar = () => {
                   sx={{
                     height: 255,
                     display: "block",
-                    maxWidth: 400,
+                    maxWidth: "100%",
                     overflow: "hidden",
                     width: "100%",
                   }}
