@@ -2,6 +2,7 @@ import React from "react";
 import Sidebar from "../common/sidebar";
 import Navbar from "./Navbar";
 import { Box } from "@mui/material";
+import Contend from "./Contend";
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       >
         <Sidebar />
       </Box>
+      <Contend />
     </>
   );
 };

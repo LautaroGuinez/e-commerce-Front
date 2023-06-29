@@ -13,8 +13,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <Sidebar />
-      <Contend />
+
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/register" element={<Register />} />
