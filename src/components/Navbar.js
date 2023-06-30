@@ -15,6 +15,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import CreateSvgIcon from "../styles/iconoNavbar";
 import SearchBar from "../common/searchBar";
 import iconoCarrito from "../styles/iconoCarrito";
+import { display, flexbox } from "@mui/system";
 /* 
 Lo comentado va a servir para la funcionalidad despues
 Verificar que esta en uso o no, y descartar o descomentar
@@ -42,12 +43,12 @@ function Navbar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-  const registro = false;
+  const registro = true;
   return (
     <AppBar position="static">
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" >
         <Toolbar disableGutters>
-          <div>{iconoNavbar}</div>
+          <div >{iconoNavbar}</div>
           <Typography
             variant="h6"
             noWrap
@@ -57,7 +58,7 @@ function Navbar() {
               mr: 2,
               display: { xs: "none", md: "flex" },
               fontFamily: "monospace",
-              fontWeight: 700,
+              fontWeight: 500,
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
@@ -114,7 +115,7 @@ function Navbar() {
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
               fontFamily: "monospace",
-              fontWeight: 700,
+              fontWeight: 500,
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
@@ -135,8 +136,7 @@ function Navbar() {
                   </Button>
                 ))}
           </Box>
-          {iconoCarrito()}
-          {SearchBar()}
+        
           <Box sx={{ flexGrow: 0 }}>
             {registro ? (
               <>

@@ -7,7 +7,6 @@ import axios from "axios";
 import { Box } from "@mui/material";
 import Contend from "../components/Contend";
 
-
 const SearchBar = () => {
   const [search, setSearch] = useState("");
   const [product, setProduct] = useState([]);
@@ -25,7 +24,8 @@ const SearchBar = () => {
 
   return (
     <div
-      style={{
+      style={
+        {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -33,39 +33,32 @@ const SearchBar = () => {
         marginTop: "0",
       }}
     >
-      {MyIcon()}
-      <TextField
-        id="standard-basic"
-        label="Search Item"
-        variant="standard"
-        sx={{ width: "300px" }}
-      />
-      <Button variant="outlined">Search</Button>
-    <div>
-      <Box
-        component="form"
-        onSubmit={handleSearch} // Cambio en el evento onSubmit
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          paddingTop: "0",
-          marginTop: "0",
-        }}
-      >
-        <TextField
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          id="standard-basic"
-          label="Search Item"
-          variant="standard"
-          sx={{ width: "300px" }}
-        />
-        <Button type="submit" variant="outlined">
-          Search
-        </Button>
-      </Box>
-      <Contend product={product} />
+      <div>
+        <Box
+          component="form"
+          onSubmit={handleSearch} // Cambio en el evento onSubmit
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            paddingTop: "0",
+            marginTop: "0",
+          }}
+        >
+          <TextField
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            id="standard-basic"
+            label="Search Item"
+            variant="standard"
+            sx={{ width: "300px" }}
+          />
+          <Button type="submit" variant="outlined">
+            Search
+          </Button>
+        </Box>
+        <Contend product={product} />
+      </div>
     </div>
   );
 };
