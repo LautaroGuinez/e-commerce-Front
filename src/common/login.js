@@ -5,8 +5,10 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
 import { useNavigate } from "react-router";
-
+import { useDispatch } from "react-redux";
+import { setUser } from "../state/user";
 const Login = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
@@ -28,6 +30,7 @@ const Login = () => {
       )
       .then((response) => {
         console.log("Inicio de sesión exitoso", response);
+        dispatch(setUser(response.data.payload));
         navigate("/");
         // Realiza las acciones necesarias después del inicio de sesión exitoso
       })
