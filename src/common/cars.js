@@ -12,6 +12,9 @@ import {
   TableBody,
 } from "@mui/material";
 
+import "../styles/cars.css";
+import { Link } from "react-router-dom";
+
 const Cars = () => {
   // prueba con fake date
   const [carrito, setCarrito] = React.useState(fakeData());
@@ -40,39 +43,28 @@ const Cars = () => {
 
   return (
     <>
-      <div
-        style={{
-          display: "flex",
+      <div className="conteiner"
 
-          height: "80vh",
-          flexDirection: "column",
-
-          alignItems: "center",
-        }}
       >
         <Table
-          style={{
-            width: "80%",
-            border: "3px solid #00a9e0",
-            backgroundColor: "#DEFFFF",
-          }}
+         className="table"
         >
-          <TableHead style={{ border: "3px solid #00a9e0" }}>
-            <TableRow>
-              <TableCell>Producto</TableCell>
-              <TableCell>Precio Unitario</TableCell>
-              <TableCell>Cantidad</TableCell>
-              <TableCell>Precio Final</TableCell>
+          <TableHead  >
+            <TableRow >
+              <TableCell >Product</TableCell>
+              <TableCell>Unit Price</TableCell>
+              <TableCell>Units</TableCell>
+              <TableCell>Total Price</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody >
             {carrito.map((product) => (
               <TableRow
                 key={product.id}
-                style={{ border: "3px solid #00a9e0" }}
+                className="border"
               >
-                <TableCell>
-                  <img src={product.image} height={"25px"} width={"25px"}></img>
+                <TableCell >
+                  {/* <img src={product.image} height={"25px"} width={"25px"}></img> */}
                   {product.name}
                 </TableCell>
                 <TableCell>{product.price}</TableCell>
@@ -82,26 +74,28 @@ const Cars = () => {
                 <TableCell>
                   {(product.price * product.quantity).toFixed(2)}
                 </TableCell>
-                <TableCell>
-                  <Button onClick={() => handleSumarCantidad(product.id)}>
+                <TableCell ><Stack direction="row" spacing={2}>
+                  <Button onClick={() => handleSumarCantidad(product.id)} variant="contained">
                     +
                   </Button>
-                  <Button onClick={() => handleRestarCantidad(product.id)}>
+                  <Button onClick={() => handleRestarCantidad(product.id)} variant="contained">
                     -
                   </Button>
-                  <Button onClick={() => handleEliminarProducto(product.id)}>
-                    Eliminar
-                  </Button>
+                  <Button onClick={() => handleEliminarProducto(product.id)} variant="contained">
+                    Delete
+                  </Button>  </Stack>
                 </TableCell>
               </TableRow>
             ))}{" "}
             <TableRow>
               <TableCell colSpan={3} align="right">
-                Precio Total:
+              Total price:
               </TableCell>
               <TableCell>{calcularPrecioTotal()}</TableCell>
               <TableCell>
-                <Button>Comprar</Button>
+                <Link to="/puchease">
+                <Button variant="contained">To pay</Button>
+                </Link>
               </TableCell>
             </TableRow>
           </TableBody>

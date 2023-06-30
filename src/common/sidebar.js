@@ -51,7 +51,7 @@ const Sidebar = () => {
   };
 
   return (
-    <>
+    <div style={{marginTop:"25px"}}>
       <Box sx={{ maxWidth: 700, flexGrow: 1 }}>
         <Paper
           square
@@ -64,7 +64,7 @@ const Sidebar = () => {
             bgcolor: "background.default",
           }}
         >
-          <Typography>{data[activeStep].titulo}</Typography>
+         
         </Paper>
         <AutoPlaySwipeableViews
           axis={theme.direction === "rtl" ? "x-reverse" : "x"}
@@ -125,7 +125,7 @@ const Sidebar = () => {
           }
         />
       </Box>
-    </>
+    </div>
   );
 };
 

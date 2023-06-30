@@ -1,7 +1,5 @@
-import Login from "../common/login";
-import Register from "../common/register";
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
@@ -9,45 +7,102 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button1 from "@mui/material/Button";
+import { AppBar } from "@mui/material";
 import Button from "@mui/material-next/Button";
-
-import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
-import { ButtonGroup } from "@mui/material";
+import CreateSvgIcon from "../styles/iconoNavbar";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { Link } from "react-router-dom";
+import SearchIcon from "@mui/icons-material/Search";
+import { useNavigate } from "react-router";
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
+import { setUser, userInitialState } from "../state/user";
+
 /* 
 Lo comentado va a servir para la funcionalidad despues
 Verificar que esta en uso o no, y descartar o descomentar
 */
-const pages = ["My perfil", "Products", "Card"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+
+const pages = [];
+const settings = ["My Cars", "Logout"];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
+
+  const handleLogout = () => {
+    axios
+      .get("http://localhost:3001/api/users/logout", {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+        credentials: "include",
+      })
+      .then((res) => res.data)
+      .then(() => {
+        dispatch(setUser(userInitialState));
+        handleMenuClose();
+        navigate("/");
+      });
   };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
   };
-  const registro = true;
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            onClick={handleOpenNavMenu}
+            sx={{ display: { xs: "block", md: "none" } }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Menu
+            id="menu-appbar"
+            anchorEl={anchorElNav}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+            open={Boolean(anchorElNav)}
+            onClose={handleCloseNavMenu}
+            sx={{
+              display: { xs: "block", md: "none" },
+            }}
+          >
+            {pages.map((page) => (
+              <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">{page}</Typography>
+              </MenuItem>
+            ))}
+          </Menu>
           <Typography
             variant="h6"
             noWrap
@@ -56,139 +111,120 @@ function Navbar() {
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
+              fontFamily: " Lato, Helvetica Neue, helvetica, sans-serif",
               fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
+              letterSpacing: "0.1rem",
+              color: "white",
               textDecoration: "none",
+              "&:hover": {
+                color: "white",
+              },
             }}
           >
             VGAMER
           </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
-              {registro
-                ? console.log("Agregar funcionalidad")
-                : pages.map((page) => (
-                    <MenuItem key={page} onClick={handleCloseNavMenu}>
-                      <Typography textAlign="center">{page}</Typography>
-                    </MenuItem>
-                  ))}
-            </Menu>
-          </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
+          <Box
             sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
+              display: {
+                xs: "flex",
+                md: "none",
+              },
+            }}
+          ></Box>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: {
+                xs: "none",
+                md: "flex",
+              },
             }}
           >
-            VGAMER
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {registro
-              ? console.log("Agregar funcionalidad")
-              : pages.map((page) => (
-                  <Button
-                    key={page}
-                    onClick={handleCloseNavMenu}
-                    sx={{ my: 2, color: "white", display: "block" }}
-                  >
-                    {page}
-                  </Button>
-                ))}
+            {pages.map((page, i) => (
+              <Button
+                key={page}
+                color="inherit"
+                component={Link}
+                to={i === 0 ? "/movies" : "/tv"}
+              >
+                {page}
+              </Button>
+            ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-            {registro ? (
-              <>
-                <Button
-                  sx={{ color: "white", fontSize: "1.3rem" }}
-                  href="login"
-                >
-                  LOGIN
-                </Button>
+          <IconButton
+            size="large"
+            aria-label="search"
+            color="inherit"
+            component={Link}
+            to="/search"
+          >
+            <SearchIcon />
+          </IconButton>
 
-                <Button
-                  sx={{ color: "white", fontSize: "1.3rem" }}
-                  href="register"
+          {user.email === null ? (
+            <>
+              <IconButton
+                size="large"
+                aria-label="account"
+                color="inherit"
+                onClick={handleMenuOpen}
+              >
+                <AccountCircleIcon />
+              </IconButton>
+              <Menu
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={handleMenuClose}
+              >
+                <MenuItem
+                  onClick={handleMenuClose}
+                  to={"/register"}
+                  component={Link}
                 >
-                  REGISTER
-                </Button>
-              </>
-            ) : (
-              <>
-                <Tooltip title="Open settings">
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar
-                      alt="Remy Sharp"
-                      src="/static/images/avatar/2.jpg"
-                    />
-                  </IconButton>
-                </Tooltip>
-                <Menu
-                  sx={{ mt: "45px" }}
-                  id="menu-appbar"
-                  anchorEl={anchorElUser}
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  open={Boolean(anchorElUser)}
-                  onClose={handleCloseUserMenu}
+                  Crear cuenta
+                </MenuItem>
+                <MenuItem
+                  onClick={handleMenuClose}
+                  to={"/login"}
+                  component={Link}
                 >
-                  {settings.map((setting) => (
-                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center">{setting}</Typography>
-                    </MenuItem>
-                  ))}
-                </Menu>
-              </>
-            )}
-          </Box>
+                  Acceder
+                </MenuItem>
+              </Menu>
+            </>
+          ) : (
+            <>
+              <IconButton
+                size="large"
+                aria-label="search"
+                color="inherit"
+                component={Link}
+                to="/cars"
+              >
+                <ShoppingCartIcon />
+              </IconButton>
+              <IconButton
+                size="large"
+                aria-label="account"
+                color="inherit"
+                onClick={handleMenuOpen}
+              >
+                <AccountCircleIcon />
+              </IconButton>
+              <Menu
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={handleMenuClose}
+              >
+                <MenuItem to={"/mi_cuenta"} component={Link}>
+                  Mi cuenta
+                </MenuItem>
+                <MenuItem onClick={handleLogout}>Cerrar sesión</MenuItem>
+              </Menu>
+            </>
+          )}
         </Toolbar>
       </Container>
     </AppBar>

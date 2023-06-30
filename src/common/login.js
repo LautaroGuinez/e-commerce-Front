@@ -5,9 +5,10 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
 import { useNavigate } from "react-router";
-
-
+import { useDispatch } from "react-redux";
+import { setUser } from "../state/user";
 const Login = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
@@ -15,20 +16,28 @@ const Login = () => {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3001/api/users/login", {
-        email: loginEmail,
-        password: loginPassword,
-      })
+      .post(
+        "http://localhost:3001/api/users/login",
+        {
+          email: loginEmail,
+          password: loginPassword,
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+          credentials: "include",
+        }
+      )
       .then((response) => {
         console.log("Inicio de sesión exitoso", response);
-        navigate("/")
+        dispatch(setUser(response.data.payload));
+        navigate("/");
         // Realiza las acciones necesarias después del inicio de sesión exitoso
       })
       .catch((error) => {
         console.log("No se pudo iniciar sesión:", error);
         // Maneja el error de inicio de sesión
       });
-    
   };
 
   return (
