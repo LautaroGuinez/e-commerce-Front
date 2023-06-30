@@ -6,6 +6,9 @@ import Register from "./common/register";
 import Login from "./common/login";
 import Cars from "./common/cars";
 import Navbar from "./components/Navbar";
+import Contend from "./components/Contend";
+import Sidebar from "./common/sidebar";
+import SearchBar from "./common/searchBar";
 
 function App() {
   return (
@@ -15,8 +18,9 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/product" element={<ProductsCards />} />
-        <Route path="/Cars" element={<Cars />} />
+        <Route path="/product/:id" element={<ProductsCards />} />
+        <Route path="/cars" element={<Cars />} />
+        <Route path="/search" element={<SearchBar />} />
       </Routes>
     </>
   );

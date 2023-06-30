@@ -1,0 +1,26 @@
+.border {
+  border: 3px solid #00a9e0;
+}
+.conteiner {
+  display: flex;
+
+  height: 80vh;
+  flex-direction: column;
+
+  align-items: center;
+  margin: 150px;
+  margin-top: 50px;
+}
+.table{
+ 
+  border-bottom: 1px solid;
+    border: 3px solid #00a9e0;
+    background-color:    #DEFFFF;
+  }
+
+  .MuiTableCell-root{ border-bottom: 1px solid;
+  border: 3px solid #00a9e0;
+  background-color:    #DEFFFF;
+ 
+
+}
