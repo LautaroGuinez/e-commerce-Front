@@ -1,5 +1,5 @@
 import * as React from "react";
-
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
@@ -9,20 +9,20 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import { AppBar } from "@mui/material";
 import Button from "@mui/material-next/Button";
-
 import MenuItem from "@mui/material/MenuItem";
-
 import CreateSvgIcon from "../styles/iconoNavbar";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import { useNavigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
+import { setUser, userInitialState } from "../state/user";
+
 /* 
 Lo comentado va a servir para la funcionalidad despues
 Verificar que esta en uso o no, y descartar o descomentar
 */
-const iconoNavbar = CreateSvgIcon();
 
 const pages = [];
 const settings = ["My Cars", "Logout"];
@@ -38,7 +38,20 @@ function Navbar() {
     setAnchorElNav(event.currentTarget);
   };
 
-  const handleLogout = () => {};
+  const handleLogout = () => {
+    axios
+      .get("http://localhost:3001/api/users/logout", {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+        credentials: "include",
+      })
+      .then((res) => res.data)
+      .then(() => {
+        dispatch(setUser(userInitialState));
+        handleMenuClose();
+        navigate("/");
+      });
+  };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
@@ -101,14 +114,14 @@ function Navbar() {
               fontFamily: " Lato, Helvetica Neue, helvetica, sans-serif",
               fontWeight: 700,
               letterSpacing: "0.1rem",
-              color: "#f47521",
+              color: "white",
               textDecoration: "none",
               "&:hover": {
                 color: "white",
               },
             }}
           >
-            NezukoMovies
+            VGAMER
           </Typography>
           <Box
             sx={{
@@ -139,6 +152,7 @@ function Navbar() {
               </Button>
             ))}
           </Box>
+
           <IconButton
             size="large"
             aria-label="search"
@@ -182,6 +196,15 @@ function Navbar() {
             </>
           ) : (
             <>
+              <IconButton
+                size="large"
+                aria-label="search"
+                color="inherit"
+                component={Link}
+                to="/cars"
+              >
+                <ShoppingCartIcon />
+              </IconButton>
               <IconButton
                 size="large"
                 aria-label="account"
