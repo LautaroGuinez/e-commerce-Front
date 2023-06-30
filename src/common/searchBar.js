@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+
+import MyIcon from "../styles/iconoLupa";
 import axios from "axios";
 import { Box } from "@mui/material";
 import Contend from "../components/Contend";
+
 
 const SearchBar = () => {
   const [search, setSearch] = useState("");
@@ -21,6 +24,23 @@ const SearchBar = () => {
   };
 
   return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        paddingTop: "0",
+        marginTop: "0",
+      }}
+    >
+      {MyIcon()}
+      <TextField
+        id="standard-basic"
+        label="Search Item"
+        variant="standard"
+        sx={{ width: "300px" }}
+      />
+      <Button variant="outlined">Search</Button>
     <div>
       <Box
         component="form"
