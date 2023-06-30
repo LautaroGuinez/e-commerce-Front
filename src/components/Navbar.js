@@ -13,9 +13,10 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import CreateSvgIcon from "../styles/iconoNavbar";
-import SearchBar from "../common/searchBar";
-import iconoCarrito from "../styles/iconoCarrito";
-import { display, flexbox } from "@mui/system";
+
+import SearchIcon from '@mui/icons-material/Search';
+
+import {useSelector,useDispatch} from "react-redux"
 /* 
 Lo comentado va a servir para la funcionalidad despues
 Verificar que esta en uso o no, y descartar o descomentar
@@ -28,6 +29,9 @@ const settings = ["My Cars", "Logout"];
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const dispatch = useDispatch()
+  const user = useSelector((state)=>state.user)
+
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -43,7 +47,7 @@ function Navbar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-  const registro = true;
+  
   return (
     <AppBar position="static">
       <Container maxWidth="xl" >
@@ -95,7 +99,7 @@ function Navbar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {registro
+              {user.email=== null
                 ? iconoNavbar
                 : pages.map((page) => (
                     <MenuItem key={page} onClick={handleCloseNavMenu}>
@@ -124,7 +128,7 @@ function Navbar() {
             VGAMER
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {registro
+            {user.email=== null
               ? iconoNavbar
               : pages.map((page) => (
                   <Button
@@ -138,7 +142,7 @@ function Navbar() {
           </Box>
         
           <Box sx={{ flexGrow: 0 }}>
-            {registro ? (
+            {user.email=== null ? (
               <>
                 <Button
                   sx={{ color: "white", fontSize: "1.3rem" }}
