@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 
 import "../styles/cars.css";
-import { CenterFocusStrong } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 const Cars = () => {
   // prueba con fake date
@@ -51,10 +51,10 @@ const Cars = () => {
         >
           <TableHead  >
             <TableRow >
-              <TableCell >Producto</TableCell>
-              <TableCell>Precio Unitario</TableCell>
-              <TableCell>Cantidad</TableCell>
-              <TableCell>Precio Final</TableCell>
+              <TableCell >Product</TableCell>
+              <TableCell>Unit Price</TableCell>
+              <TableCell>Units</TableCell>
+              <TableCell>Total Price</TableCell>
             </TableRow>
           </TableHead>
           <TableBody >
@@ -82,18 +82,20 @@ const Cars = () => {
                     -
                   </Button>
                   <Button onClick={() => handleEliminarProducto(product.id)} variant="contained">
-                    Eliminar
+                    Delete
                   </Button>  </Stack>
                 </TableCell>
               </TableRow>
             ))}{" "}
             <TableRow>
               <TableCell colSpan={3} align="right">
-                Precio Total:
+              Total price:
               </TableCell>
               <TableCell>{calcularPrecioTotal()}</TableCell>
               <TableCell>
-                <Button variant="contained">Comprar</Button>
+                <Link to="/puchease">
+                <Button variant="contained">To pay</Button>
+                </Link>
               </TableCell>
             </TableRow>
           </TableBody>

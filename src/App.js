@@ -11,6 +11,7 @@ import SearchBar from "./common/searchBar";
 import { useDispatch } from "react-redux";
 import { setUser } from "./state/user";
 import axios from "axios";
+import Puchease from "./common/puchase";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ function App() {
         <Route path="/product/:id" element={<ProductsCards />} />
         <Route path="/cars" element={<Cars />} />
         <Route path="/search" element={<SearchBar />} />
+        <Route path="/puchease" element={<Puchease />} />
       </Routes>
     </>
   );
