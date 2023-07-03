@@ -18,10 +18,18 @@ const ProductCards = (props) => {
     dispatch(addToCars(product));
   };
 
+
   useEffect(() => {
-    axios
-      .get(`http://localhost:3001/api/products/${id}`)
-      .then((res) => setProduct(res.data));
+    const fetchProduct = async () => {
+      try {
+        const res = await axios.get(`http://localhost:3001/api/products/${id}`);
+        setProduct(res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
+    fetchProduct();
   }, [id]);
 
   return (
