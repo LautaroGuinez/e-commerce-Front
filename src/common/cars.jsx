@@ -16,16 +16,16 @@ import Button from "@mui/material/Button";
 const Cars = () => {
 
   //hacer la funcionalidad de sumar cantidad
-  const handleSumAmount = (productId) => {};
+  const handleSumarCantidad = (productId) => {};
   //hacer la funcionalidad de restar cantidad
 
-  const handleRestAmount = (productId) => {};
+  const handleRestarCantidad = (productId) => {};
   //hacer la funcionalidad de eliminar cantidad
 
-  const handleDeleteProduct = (productId) => {};
+  const handleEliminarProducto = (productId) => {};
   //funcionalidad de sumar el total
 
-  const calculateTotalPrice = () => {
+  const calcularPrecioTotal = () => {
     let total = 0;
 
 
@@ -42,7 +42,7 @@ console.log(cars)
   return (
     <>
       <div className="conteiner">
- HEAD
+ 
         {cars.cars && cars.cars.length > 0 ? (
           <Table className="table">
             <TableHead>
