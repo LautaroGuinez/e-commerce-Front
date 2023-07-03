@@ -10,15 +10,6 @@ import axios from "axios";
 import "../../src/styles/productsCar.css";
 import { addToCars } from "../state/cars";
 
-const ProductCards = (props) => {
-  const dispatch = useDispatch();
-  const { id } = useParams();
-  const [product, setProduct] = useState([]);
-
-  const handleAddItem = (product) => {
-    dispatch(addToCars(product));
-  };
-
 import { Link, useParams } from "react-router-dom";
 
 import axios from "axios";
@@ -37,11 +28,7 @@ const ProductCards = (props) => {
     axios
       .get(`http://localhost:3001/api/products/${id}`)
       .then((res) => setProduct(res.data));
-
   }, [id]);
-
-  }, []);
-
 
   return (
     <div>
@@ -66,7 +53,6 @@ const ProductCards = (props) => {
                 </Button>
 
                 <Button variant="contained">Add To Car</Button>
-
               </div>
             </CardContent>
           </CardActionArea>

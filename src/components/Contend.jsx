@@ -14,11 +14,10 @@ const Contend = ({ product }) => {
     <div className="products">
       {product.map((product, index) => (
         <Link to={`/product/${product.id}`}>
-
-        <AllproductsCard key={index} {...product} /></Link>
+          <AllproductsCard key={index} {...product} />
 
           <AllproductsCard key={index} {...product} />
-</Link>
+        </Link>
       ))}
     </div>
   );

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
@@ -7,15 +6,6 @@ import MyIcon from "../styles/iconoLupa";
 import axios from "axios";
 import { Box } from "@mui/material";
 import Contend from "../components/Contend";
-
-import axios from "axios";
-
-import Contend from "../components/Contend";
-
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import { Box } from "@mui/material";
-
 
 const SearchBar = () => {
   const [search, setSearch] = useState("");
@@ -34,12 +24,7 @@ const SearchBar = () => {
 
   return (
     <div
-
-      style={
-        {
-
       style={{
-
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
