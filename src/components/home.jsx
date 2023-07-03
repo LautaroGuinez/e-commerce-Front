@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import Sidebar from "../common/sidebar";
 
 import { Box } from "@mui/material";
@@ -12,6 +13,22 @@ const Home = () => {
   },[])
   
 
+import axios from "axios";
+
+import Sidebar from "../common/sidebar";
+import Contend from "./Contend";
+
+import { Box } from "@mui/material";
+
+const Home = () => {
+  const [product, setProduct] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/api/products")
+      .then((res) => setProduct(res.data));
+  }, []);
+
+
   return (
     <>
       <Box
@@ -19,7 +36,11 @@ const Home = () => {
       >
         <Sidebar />
       </Box>
+
       <Contend product={product}/>
+
+      <Contend product={product} />
+
     </>
   );
 };
