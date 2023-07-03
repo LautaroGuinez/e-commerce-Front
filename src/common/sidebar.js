@@ -1,4 +1,7 @@
 import React from "react";
+import SwipeableViews from "react-swipeable-views";
+import { autoPlay } from "react-swipeable-views-utils";
+
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MobileStepper from "@mui/material/MobileStepper";
@@ -7,8 +10,6 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
-import SwipeableViews from "react-swipeable-views";
-import { autoPlay } from "react-swipeable-views-utils";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -51,7 +52,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div style={{marginTop:"25px"}}>
+    <div style={{ marginTop: "25px" }}>
       <Box sx={{ maxWidth: 700, flexGrow: 1 }}>
         <Paper
           square
@@ -63,9 +64,7 @@ const Sidebar = () => {
             pl: 2,
             bgcolor: "background.default",
           }}
-        >
-         
-        </Paper>
+        ></Paper>
         <AutoPlaySwipeableViews
           axis={theme.direction === "rtl" ? "x-reverse" : "x"}
           index={activeStep}
