@@ -18,22 +18,22 @@ import TextField from "@mui/material/TextField";
 
 const Cars = () => {
   // prueba con fake date
-  const [carrito, setCarrito] = React.useState(fakeData());
+  const [carts, setCarts] = React.useState(fakeData());
 
   //hacer la funcionalidad de sumar cantidad
-  const handleSumarCantidad = (productId) => {};
+  const handleSumAmount = (productId) => {};
   //hacer la funcionalidad de restar cantidad
 
-  const handleRestarCantidad = (productId) => {};
+  const handleRestAmount = (productId) => {};
   //hacer la funcionalidad de eliminar cantidad
 
-  const handleEliminarProducto = (productId) => {};
+  const handleDeleteProduct = (productId) => {};
   //funcionalidad de sumar el total
 
-  const calcularPrecioTotal = () => {
+  const calculateTotalPrice = () => {
     let total = 0;
 
-    carrito.forEach((product) => {
+    carts.forEach((product) => {
       total += product.price * product.quantity;
     });
 
@@ -53,12 +53,9 @@ const Cars = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {carrito.map((product) => (
+            {carts.map((product) => (
               <TableRow key={product.id} className="border">
-                <TableCell>
-                  {/* <img src={product.image} height={"25px"} width={"25px"}></img> */}
-                  {product.name}
-                </TableCell>
+                <TableCell>{product.name}</TableCell>
                 <TableCell>{product.price}</TableCell>
                 <TableCell>
                   {product.quantity > 0 ? product.quantity : 1}
@@ -69,19 +66,19 @@ const Cars = () => {
                 <TableCell>
                   <Stack direction="row" spacing={2}>
                     <Button
-                      onClick={() => handleSumarCantidad(product.id)}
+                      onClick={() => handleSumAmount(product.id)}
                       variant="contained"
                     >
                       +
                     </Button>
                     <Button
-                      onClick={() => handleRestarCantidad(product.id)}
+                      onClick={() => handleRestAmount(product.id)}
                       variant="contained"
                     >
                       -
                     </Button>
                     <Button
-                      onClick={() => handleEliminarProducto(product.id)}
+                      onClick={() => handleDeleteProduct(product.id)}
                       variant="contained"
                     >
                       Delete
@@ -94,7 +91,7 @@ const Cars = () => {
               <TableCell colSpan={3} align="right">
                 Total price:
               </TableCell>
-              <TableCell>{calcularPrecioTotal()}</TableCell>
+              <TableCell>{calculateTotalPrice()}</TableCell>
               <TableCell>
                 <Link to="/puchease">
                   <Button variant="contained">To pay</Button>
