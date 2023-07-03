@@ -22,7 +22,6 @@ const Home = () => {
 
       <Contend product={product} />
 
-      <Contend product={product} />
     </>
   );
 };
