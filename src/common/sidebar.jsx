@@ -23,8 +23,8 @@ const Sidebar = () => {
     {
       id: 2,
       imgUrl:
-        "https://medias.musimundo.com/medias/00431006-144267-144267-02-144267-02.jpg-size515?context=bWFzdGVyfGltYWdlc3w4MDI2N3xpbWFnZS9qcGVnfGgwNC9oNTcvMTA0NDA3MzI4Njg2MzgvMDA0MzEwMDYtMTQ0MjY3LTE0NDI2N18wMi0xNDQyNjdfMDIuanBnX3NpemU1MTV8NjkwMDRjMmI1ZWMxY2Q1MmNkZTIyZTE1ZGY2Nzg3OGQ5MmFmZDU4MGMzOTYwMzY2YTM0ZThmMTYyNWIzNGQ5YQ",
-      titulo: "tv",
+        "https://images-ext-1.discordapp.net/external/y2iLMZtan04Eb5xQP4la3eB_QLSoXwcO3m9Rrcxbtt4/https/media.wired.com/photos/62ec187c08728a31e5d3d1ce/191%3A100/w_2580%2Cc_limit/PS5-Backbone-Controller-Gear.jpg?width=935&height=489",
+      titulo: "consola",
     },
     {
       id: 3,
@@ -51,7 +51,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div style={{marginTop:"25px"}}>
+    <div style={{ marginTop: "25px" }}>
       <Box sx={{ maxWidth: 700, flexGrow: 1 }}>
         <Paper
           square
@@ -63,9 +63,7 @@ const Sidebar = () => {
             pl: 2,
             bgcolor: "background.default",
           }}
-        >
-         
-        </Paper>
+        ></Paper>
         <AutoPlaySwipeableViews
           axis={theme.direction === "rtl" ? "x-reverse" : "x"}
           index={activeStep}

@@ -14,6 +14,7 @@ import {
 
 import "../styles/cars.css";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 const Cars = () => {
   // prueba con fake date
@@ -36,34 +37,27 @@ const Cars = () => {
       total += product.price * product.quantity;
     });
 
-
-
     return total.toFixed(2);
   };
 
+  const cars = useSelector((state) => state.cars);
+
   return (
     <>
-      <div className="conteiner"
-
-      >
-        <Table
-         className="table"
-        >
-          <TableHead  >
-            <TableRow >
-              <TableCell >Product</TableCell>
+      <div className="conteiner">
+        <Table className="table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Product</TableCell>
               <TableCell>Unit Price</TableCell>
               <TableCell>Units</TableCell>
               <TableCell>Total Price</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody >
+          <TableBody>
             {carrito.map((product) => (
-              <TableRow
-                key={product.id}
-                className="border"
-              >
-                <TableCell >
+              <TableRow key={product.id} className="border">
+                <TableCell>
                   {/* <img src={product.image} height={"25px"} width={"25px"}></img> */}
                   {product.name}
                 </TableCell>
@@ -74,27 +68,38 @@ const Cars = () => {
                 <TableCell>
                   {(product.price * product.quantity).toFixed(2)}
                 </TableCell>
-                <TableCell ><Stack direction="row" spacing={2}>
-                  <Button onClick={() => handleSumarCantidad(product.id)} variant="contained">
-                    +
-                  </Button>
-                  <Button onClick={() => handleRestarCantidad(product.id)} variant="contained">
-                    -
-                  </Button>
-                  <Button onClick={() => handleEliminarProducto(product.id)} variant="contained">
-                    Delete
-                  </Button>  </Stack>
+                <TableCell>
+                  <Stack direction="row" spacing={2}>
+                    <Button
+                      onClick={() => handleSumarCantidad(product.id)}
+                      variant="contained"
+                    >
+                      +
+                    </Button>
+                    <Button
+                      onClick={() => handleRestarCantidad(product.id)}
+                      variant="contained"
+                    >
+                      -
+                    </Button>
+                    <Button
+                      onClick={() => handleEliminarProducto(product.id)}
+                      variant="contained"
+                    >
+                      Delete
+                    </Button>{" "}
+                  </Stack>
                 </TableCell>
               </TableRow>
             ))}{" "}
             <TableRow>
               <TableCell colSpan={3} align="right">
-              Total price:
+                Total price:
               </TableCell>
               <TableCell>{calcularPrecioTotal()}</TableCell>
               <TableCell>
                 <Link to="/puchease">
-                <Button variant="contained">To pay</Button>
+                  <Button variant="contained">To pay</Button>
                 </Link>
               </TableCell>
             </TableRow>
@@ -105,5 +110,3 @@ const Cars = () => {
   );
 };
 export default Cars;
-
-

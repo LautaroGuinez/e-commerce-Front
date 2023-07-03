@@ -7,16 +7,15 @@ import { useSelector, useDispatch } from "react-redux";
 import Button from "@mui/material/Button";
 import axios from "axios";
 import "../../src/styles/productsCar.css";
-import { addItem } from "../state/cars";
+import { addToCars } from "../state/cars";
 
 const ProductCards = (props) => {
-  const cartItem = useSelector((state) => state.cartItem);
   const dispatch = useDispatch();
   const { id } = useParams();
   const [product, setProduct] = useState([]);
 
-  const handleAddItem = (item) => {
-    dispatch(addItem(item));
+  const handleAddItem = (product) => {
+    dispatch(addToCars(product));
   };
 
   useEffect(() => {
@@ -40,7 +39,7 @@ const ProductCards = (props) => {
                 <p className="price">PRICE</p>
                 <p className="productPrice">{product.price}</p>
                 <Button
-                  onClick={() => handleAddItem(...product)}
+                  onClick={() => handleAddItem({ ...product })}
                   variant="contained"
                 >
                   Add To Car
