@@ -14,20 +14,23 @@ import { useSelector, useDispatch } from "react-redux";
 import Button from "@mui/material/Button";
 
 const Cars = () => {
+
   //hacer la funcionalidad de sumar cantidad
-  const handleSumarCantidad = (productId) => {};
+  const handleSumAmount = (productId) => {};
   //hacer la funcionalidad de restar cantidad
 
-  const handleRestarCantidad = (productId) => {};
+  const handleRestAmount = (productId) => {};
   //hacer la funcionalidad de eliminar cantidad
 
-  const handleEliminarProducto = (productId) => {};
+  const handleDeleteProduct = (productId) => {};
   //funcionalidad de sumar el total
 
-  const calcularPrecioTotal = () => {
+  const calculateTotalPrice = () => {
     let total = 0;
 
+
     cars.cars.forEach((product) => {
+
       total += product.price * product.quantity;
     });
 
@@ -39,6 +42,7 @@ console.log(cars)
   return (
     <>
       <div className="conteiner">
+ HEAD
         {cars.cars && cars.cars.length > 0 ? (
           <Table className="table">
             <TableHead>
@@ -103,6 +107,7 @@ console.log(cars)
         ) : (
           <p>Empty cart</p>
         )}
+
       </div>
     </>
   );

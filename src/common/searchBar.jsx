@@ -10,14 +10,16 @@ const SearchBar = () => {
   const [product, setProduct] = useState([]);
   console.log(product);
 
-  const handleSearch = (e) => {
+  const handleSearch = async (e) => {
     e.preventDefault();
-    axios
-      .get(`http://localhost:3001/api/products/search/${search}`)
-      .then((response) => setProduct(response.data))
-      .catch((error) => {
-        console.error(error);
-      });
+    try {
+      const response = await axios.get(
+        `http://localhost:3001/api/products/search/${search}`
+      );
+      setProduct(response.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
