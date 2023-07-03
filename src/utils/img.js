@@ -6,4 +6,8 @@ const imgUrl = [
   "https://images-na.ssl-images-amazon.com/images/I/61JWzAdmuLL._AC_SL1500_.jpg",
 ];
 
-module.exports = imgUrl();
+const img = () => {
+  return imgUrl;
+};
+
+module.exports = imgUrl;

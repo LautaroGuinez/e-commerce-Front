@@ -1,16 +1,8 @@
 import * as React from "react";
-
 import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import fakeData from "../utils/fakeData";
-
+import fakeData from "../utils/fakeData.js";
 import { Link } from "react-router-dom";
-
-import fakeData from "../utils/fakeData";
 import "../styles/cars.css";
-
 import {
   Table,
   TableHead,
@@ -18,13 +10,7 @@ import {
   TableCell,
   TableBody,
 } from "@mui/material";
-
-
-import "../styles/cars.css";
-import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
-import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -53,9 +39,7 @@ const Cars = () => {
     return total.toFixed(2);
   };
 
-
   const cars = useSelector((state) => state.cars);
-
 
   return (
     <>

@@ -1,16 +1,8 @@
 import React, { useEffect, useState } from "react";
-
 import Sidebar from "../common/sidebar";
-
 import { Box } from "@mui/material";
 import Contend from "./Contend";
 import axios from "axios";
-import axios from "axios";
-
-import Sidebar from "../common/sidebar";
-import Contend from "./Contend";
-
-import { Box } from "@mui/material";
 
 const Home = () => {
   const [product, setProduct] = useState([]);

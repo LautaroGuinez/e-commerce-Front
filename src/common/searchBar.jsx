@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-
-import MyIcon from "../styles/iconoLupa";
 import axios from "axios";
 import { Box } from "@mui/material";
 import Contend from "../components/Contend";
