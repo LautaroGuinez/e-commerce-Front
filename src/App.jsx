@@ -4,13 +4,21 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 
 import { setUser } from "./state/user";
+
 import Home from "./components/home";
 import ProductsCards from "./common/productsCards";
 import Register from "./common/register";
 import Login from "./common/login";
 import Cars from "./common/cars";
 import Navbar from "./components/Navbar";
+
 import SearchBar from "./common/searchBar";
+import { useDispatch } from "react-redux";
+import { setUser } from "./state/user";
+import axios from "axios";
+
+import SearchBar from "./common/searchBar";
+
 import Puchease from "./common/puchase";
 
 function App() {
