@@ -13,20 +13,20 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:3001/api/users/register", {
+    try {
+      const user = await axios.post("http://localhost:3001/api/users/register", {
         name: name,
         lastname: lastname,
         email: email,
         password: password,
-      })
-      .then((user) => {
-        console.log("Usuario creado", user);
-        navigate("/login");
-      })
-      .catch((user) => console.log("No se pudo crear el usuario:", user));
+      });
+      console.log("Usuario creado", user);
+      navigate("/login");
+    } catch (error) {
+      console.log("No se pudo crear el usuario:", error);
+    }
   };
 
   console.log(name, "name");
