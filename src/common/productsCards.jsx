@@ -1,22 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-
-import axios from "axios";
-import "../../src/styles/productsCar.css";
-
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { CardActionArea } from "@mui/material";
+import { Link, useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import Button from "@mui/material/Button";
+import axios from "axios";
+import "../../src/styles/productsCar.css";
+import { addToCars } from "../state/cars";
 
 const ProductCards = (props) => {
+  const dispatch = useDispatch();
   const { id } = useParams();
   const [product, setProduct] = useState([]);
+
+  const handleAddItem = (product) => {
+    dispatch(addToCars(product));
+  };
+
   useEffect(() => {
     axios
       .get(`http://localhost:3001/api/products/${id}`)
       .then((res) => setProduct(res.data));
-  }, []);
+  }, [id]);
 
   return (
     <div>
@@ -32,7 +38,13 @@ const ProductCards = (props) => {
                 <p className="description">{product.description} </p>
                 <p className="price">PRICE</p>
                 <p className="productPrice">{product.price}</p>
-                <Button variant="contained">Add To Car</Button>
+
+                <Button
+                  onClick={() => handleAddItem({ ...product })}
+                  variant="contained"
+                >
+                  Add To Car
+                </Button>
               </div>
             </CardContent>
           </CardActionArea>

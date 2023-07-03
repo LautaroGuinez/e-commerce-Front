@@ -1,11 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router";
-import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
-
 import { setUser, userInitialState } from "../state/user";
-
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -17,6 +12,9 @@ import Container from "@mui/material/Container";
 import { AppBar } from "@mui/material";
 import Button from "@mui/material-next/Button";
 import MenuItem from "@mui/material/MenuItem";
+import { useNavigate } from "react-router";
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SearchIcon from "@mui/icons-material/Search";
 

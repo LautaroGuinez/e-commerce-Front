@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
-
 import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 
 const purchase = function () {
   return (

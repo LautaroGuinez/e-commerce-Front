@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import axios from "axios";
-
-import Contend from "../components/Contend";
-
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import axios from "axios";
 import { Box } from "@mui/material";
+import Contend from "../components/Contend";
 
 const SearchBar = () => {
   const [search, setSearch] = useState("");

@@ -2,20 +2,18 @@ import React, { useEffect } from "react";
 import { Route, Routes } from "react-router";
 import { useDispatch } from "react-redux";
 import axios from "axios";
-
-import { setUser } from "./state/user";
 import Home from "./components/home";
 import ProductsCards from "./common/productsCards";
 import Register from "./common/register";
 import Login from "./common/login";
 import Cars from "./common/cars";
 import Navbar from "./components/Navbar";
+import { setUser } from "./state/user";
 import SearchBar from "./common/searchBar";
 import Puchease from "./common/puchase";
 
 function App() {
   const dispatch = useDispatch();
-
   useEffect(() => {
     axios
       .get("http://localhost:3001/api/users/me", {

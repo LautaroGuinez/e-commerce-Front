@@ -1,9 +1,8 @@
 import * as React from "react";
+import Stack from "@mui/material/Stack";
+import fakeData from "../utils/fakeData.js";
 import { Link } from "react-router-dom";
-
-import fakeData from "../utils/fakeData";
 import "../styles/cars.css";
-
 import {
   Table,
   TableHead,
@@ -11,7 +10,7 @@ import {
   TableCell,
   TableBody,
 } from "@mui/material";
-import Stack from "@mui/material/Stack";
+import { useSelector, useDispatch } from "react-redux";
 import Button from "@mui/material/Button";
 
 const Cars = () => {
@@ -37,6 +36,8 @@ const Cars = () => {
 
     return total.toFixed(2);
   };
+
+  const cars = useSelector((state) => state.cars);
 
   return (
     <>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import AllproductsCard from "../common/allProductsCard";
+
 import "../styles/contend.css";
 
 const Contend = ({ product }) => {

@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-
 import Sidebar from "../common/sidebar";
-import Contend from "./Contend";
-
 import { Box } from "@mui/material";
+import Contend from "./Contend";
+import axios from "axios";
 
 const Home = () => {
   const [product, setProduct] = useState([]);
@@ -21,6 +19,9 @@ const Home = () => {
       >
         <Sidebar />
       </Box>
+
+      <Contend product={product} />
+
       <Contend product={product} />
     </>
   );
