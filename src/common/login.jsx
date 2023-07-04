@@ -17,30 +17,30 @@ const Login = () => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
-const handleLoginSubmit = async (e) => {
-  e.preventDefault();
-  try {
-    const response = await axios.post(
-      "http://localhost:3001/api/users/login",
-      {
-        email: loginEmail,
-        password: loginPassword,
-      },
-      {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-        credentials: "include",
-      }
-    );
-    console.log("Inicio de sesión exitoso", response);
-    dispatch(setUser(response.data.payload));
-    navigate("/");
-    // Realiza las acciones necesarias después del inicio de sesión exitoso
-  } catch (error) {
-    console.log("No se pudo iniciar sesión:", error);
-    // Maneja el error de inicio de sesión
-  }
-};
+  const handleLoginSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/api/users/login",
+        {
+          email: loginEmail,
+          password: loginPassword,
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+          credentials: "include",
+        }
+      );
+      alert("Login successful");
+      dispatch(setUser(response.data.payload));
+      navigate("/");
+      // Realiza las acciones necesarias después del inicio de sesión exitoso
+    } catch (error) {
+      alert("Could not login");
+      // Maneja el error de inicio de sesión
+    }
+  };
 
   return (
     <div

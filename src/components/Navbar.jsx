@@ -182,14 +182,14 @@ function Navbar() {
                   to={"/register"}
                   component={Link}
                 >
-                  Crear cuenta
+                  Create Count
                 </MenuItem>
                 <MenuItem
                   onClick={handleMenuClose}
                   to={"/login"}
                   component={Link}
                 >
-                  Acceder
+                  Log in
                 </MenuItem>
               </Menu>
             </>
@@ -217,10 +217,10 @@ function Navbar() {
                 open={Boolean(anchorEl)}
                 onClose={handleMenuClose}
               >
-                <MenuItem to={"/mi_cuenta"} component={Link}>
-                  Mi cuenta
+                <MenuItem to={"/my_account"} component={Link}>
+                  My account
                 </MenuItem>
-                <MenuItem onClick={handleLogout}>Cerrar sesión</MenuItem>
+                <MenuItem onClick={handleLogout}>Sign off</MenuItem>
               </Menu>
             </>
           )}

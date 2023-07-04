@@ -16,21 +16,22 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const user = await axios.post("http://localhost:3001/api/users/register", {
-        name: name,
-        lastname: lastname,
-        email: email,
-        password: password,
-      });
-      console.log("Usuario creado", user);
+      const user = await axios.post(
+        "http://localhost:3001/api/users/register",
+        {
+          name: name,
+          lastname: lastname,
+          email: email,
+          password: password,
+        }
+      );
+      alert(`User ${user.data.name} ${user.data.lastname} create.`);
       navigate("/login");
     } catch (error) {
-      console.log("No se pudo crear el usuario:", error);
+      res.send(alert("Failed to create user"));
+      console.log(error);
     }
   };
-
-  console.log(name, "name");
-
   return (
     <div
       style={{
