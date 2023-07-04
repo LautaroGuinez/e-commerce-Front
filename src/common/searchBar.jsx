@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
+
 import axios from "axios";
 import { Box } from "@mui/material";
 import Contend from "../components/Contend";
@@ -11,7 +11,22 @@ const SearchBar = () => {
   console.log(product);
 
   const handleSearch = async (e) => {
-    e.preventDefault();
+    setSearch(e.target.value);
+  };
+
+  useEffect(() => {
+    const delaySearch = setTimeout(() => {
+      if (search.trim() !== "") {
+        fetchData();
+      } else {
+        setProduct([]);
+      }
+    }, 500);
+
+    return () => clearTimeout(delaySearch);
+  }, [search]);
+
+  const fetchData = async () => {
     try {
       const response = await axios.get(
         `http://localhost:3001/api/products/search/${search}`
@@ -35,7 +50,6 @@ const SearchBar = () => {
       <div>
         <Box
           component="form"
-          onSubmit={handleSearch} // Cambio en el evento onSubmit
           style={{
             display: "flex",
             justifyContent: "center",
@@ -46,15 +60,12 @@ const SearchBar = () => {
         >
           <TextField
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={handleSearch}
             id="standard-basic"
             label="Search Item"
             variant="standard"
             sx={{ width: "300px" }}
           />
-          <Button type="submit" variant="outlined">
-            Search
-          </Button>
         </Box>
         <Contend product={product} />
       </div>
