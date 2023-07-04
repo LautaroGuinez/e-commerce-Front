@@ -28,7 +28,6 @@ const Register = () => {
       alert(`User ${user.data.name} ${user.data.lastname} create.`);
       navigate("/login");
     } catch (error) {
-      res.send(alert("Failed to create user"));
       console.log(error);
     }
   };
