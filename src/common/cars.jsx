@@ -1,6 +1,6 @@
 import * as React from "react";
 import Stack from "@mui/material/Stack";
-
+import cart from "../assest/cart.png"
 import { Link } from "react-router-dom";
 import "../styles/cars.css";
 import {
@@ -9,6 +9,7 @@ import {
   TableRow,
   TableCell,
   TableBody,
+  Box,
 } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import Button from "@mui/material/Button";
@@ -105,9 +106,16 @@ console.log(cars)
             </TableBody>
           </Table>
         ) : (
-          <p>Empty cart</p>
-        )}
 
+          <Box  textAlign="center">
+
+            <img src={cart} alt="fd" />
+            <p>Start a shopping cart!</p>
+
+            <Button component={Link} to="/">home</Button>
+          </Box>
+          
+        )}
       </div>
     </>
   );
