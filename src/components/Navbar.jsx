@@ -162,7 +162,7 @@ function Navbar() {
             <SearchIcon />
           </IconButton>
 
-          {user.email === null ? (
+          {user ? (
             <>
               <IconButton
                 size="large"
@@ -217,7 +217,7 @@ function Navbar() {
                 open={Boolean(anchorEl)}
                 onClose={handleMenuClose}
               >
-                <MenuItem to={"/my_account"} component={Link}>
+                <MenuItem to={"/myAcount"} component={Link}>
                   My account
                 </MenuItem>
                 <MenuItem onClick={handleLogout}>Sign off</MenuItem>

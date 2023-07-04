@@ -28,7 +28,7 @@ const Register = () => {
       alert(`User ${user.data.name} ${user.data.lastname} create.`);
       navigate("/login");
     } catch (error) {
-      console.log(error);
+      alert("User allready exist");
     }
   };
   return (

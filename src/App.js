@@ -11,6 +11,7 @@ import Navbar from "./components/Navbar";
 import { setUser } from "./state/user";
 import SearchBar from "./common/searchBar";
 import Puchease from "./common/puchase";
+import MyAcount from "./common/myAcount";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ function App() {
         <Route path="/cars" element={<Cars />} />
         <Route path="/search" element={<SearchBar />} />
         <Route path="/puchease" element={<Puchease />} />
+        <Route path="/myAcount" element={<MyAcount />} />
       </Routes>
     </>
   );
