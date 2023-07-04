@@ -1,6 +1,4 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
-import { setUser, userInitialState } from "../state/user";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -12,11 +10,13 @@ import Container from "@mui/material/Container";
 import { AppBar } from "@mui/material";
 import Button from "@mui/material-next/Button";
 import MenuItem from "@mui/material/MenuItem";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { Link } from "react-router-dom";
+import SearchIcon from "@mui/icons-material/Search";
 import { useNavigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import SearchIcon from "@mui/icons-material/Search";
+import { setUser, userInitialState } from "../state/user";
 
 /* 
 Lo comentado va a servir para la funcionalidad despues
@@ -162,7 +162,7 @@ function Navbar() {
             <SearchIcon />
           </IconButton>
 
-          {user ? (
+          {user.email === null ? (
             <>
               <IconButton
                 size="large"
@@ -182,14 +182,14 @@ function Navbar() {
                   to={"/register"}
                   component={Link}
                 >
-                  Create Count
+                  Crear cuenta
                 </MenuItem>
                 <MenuItem
                   onClick={handleMenuClose}
                   to={"/login"}
                   component={Link}
                 >
-                  Log in
+                  Acceder
                 </MenuItem>
               </Menu>
             </>
@@ -217,10 +217,10 @@ function Navbar() {
                 open={Boolean(anchorEl)}
                 onClose={handleMenuClose}
               >
-                <MenuItem to={"/myAcount"} component={Link}>
-                  My account
+                <MenuItem to={"/mi_cuenta"} component={Link}>
+                  Mi cuenta
                 </MenuItem>
-                <MenuItem onClick={handleLogout}>Sign off</MenuItem>
+                <MenuItem onClick={handleLogout}>Cerrar sesión</MenuItem>
               </Menu>
             </>
           )}
