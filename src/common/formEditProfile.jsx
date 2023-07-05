@@ -1,16 +1,18 @@
 import React, { useState } from "react";
+
 import { TextField, Button, Grid, Paper } from "@mui/material";
 
 const user = {
   name: "fer",
+  lastName: "gutierrez",
   email: "fer@gmail.com",
-  bio: "holamundocomoestas ",
 };
 const onSave = () => {};
+
 const EditProfileForm = () => {
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
-  const [bio, setBio] = useState(user.bio);
+  const [lastName, setLastName] = useState(user.lastName);
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -20,8 +22,8 @@ const EditProfileForm = () => {
     setEmail(event.target.value);
   };
 
-  const handleBioChange = (event) => {
-    setBio(event.target.value);
+  const handleLastNameChange = (event) => {
+    setLastName(event.target.value);
   };
 
   const handleSubmit = (event) => {
@@ -29,8 +31,8 @@ const EditProfileForm = () => {
 
     const updatedUser = {
       name: name,
+      lastName: lastName,
       email: email,
-      bio: bio,
     };
 
     onSave(updatedUser);
@@ -54,22 +56,13 @@ const EditProfileForm = () => {
               label="Last Name"
               variant="outlined"
               fullWidth
-              value={name}
-              onChange={handleNameChange}
+              value={lastName}
+              onChange={handleLastNameChange}
             />
           </Grid>
           <Grid item xs={12}>
             <TextField
               label="Email"
-              variant="outlined"
-              fullWidth
-              value={email}
-              onChange={handleEmailChange}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              label="Password"
               variant="outlined"
               fullWidth
               value={email}

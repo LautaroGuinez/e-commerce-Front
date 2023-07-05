@@ -32,22 +32,3 @@ const myAcount = ({ user }) => {
   );
 };
 export default myAcount;
-{
-  /* <Grid container spacing={2} alignItems="center">
-        <Grid item>
-          <Avatar src={""} alt={"user.name"} />
-        </Grid>
-        <Grid item>
-          <Typography variant="h4">user.name</Typography>
-          <Typography variant="subtitle1">Last Name: user.lastName</Typography>
-          <Typography variant="subtitle1">Email: user.email</Typography>
-          <Typography variant="subtitle1">
-            Type User: superUser: administrador : cliente
-          </Typography>
-        </Grid>
-      </Grid>
-      <IconButton onClick={handleOpenNavMenu}>Edit Profile</IconButton>
-      <IconButton onClick={handleOpenNavMenu}>Delete Profile</IconButton>
-
-      <TableRow>Table Row</TableRow> */
-}

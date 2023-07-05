@@ -9,6 +9,10 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
+import axios from "axios";
+import { setUser, userInitialState } from "../state/user";
+
+const user = useSelector((state) => state.user);
 
 const DeleteProfile = ({ onDelete }) => {
   const [open, setOpen] = React.useState(false);
@@ -21,9 +25,15 @@ const DeleteProfile = ({ onDelete }) => {
     setOpen(false);
   };
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
     //onDelete();
-    //pedido al back para eliminar user
+    try {
+      await axios.delete("http://localhost:3001/api/users/delete", {
+        email: user.email,
+      });
+      dispatch(setUser(userInitialState));
+      navigate("/");
+    } catch (error) {}
     handleClose();
   };
 

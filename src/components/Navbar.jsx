@@ -217,10 +217,10 @@ function Navbar() {
                 open={Boolean(anchorEl)}
                 onClose={handleMenuClose}
               >
-                <MenuItem to={"/mi_cuenta"} component={Link}>
-                  Mi cuenta
+                <MenuItem to={"/myAcount"} component={Link}>
+                  My Acount
                 </MenuItem>
-                <MenuItem onClick={handleLogout}>Cerrar sesión</MenuItem>
+                <MenuItem onClick={handleLogout}>Sign off</MenuItem>
               </Menu>
             </>
           )}
