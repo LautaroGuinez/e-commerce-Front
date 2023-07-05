@@ -11,8 +11,9 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { setUser, userInitialState } from "../state/user";
+import { useSelector } from "react-redux";
 
-const user = useSelector((state) => state.user);
+//const user = useSelector((state) => state.user);
 
 const DeleteProfile = ({ onDelete }) => {
   const [open, setOpen] = React.useState(false);
