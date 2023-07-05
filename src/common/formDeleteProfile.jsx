@@ -11,11 +11,13 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { setUser, userInitialState } from "../state/user";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
+const DeleteProfile = () => {
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
-//const user = useSelector((state) => state.user);
-
-const DeleteProfile = ({ onDelete }) => {
   const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => {
@@ -27,14 +29,24 @@ const DeleteProfile = ({ onDelete }) => {
   };
 
   const handleDelete = async () => {
-    //onDelete();
     try {
-      await axios.delete("http://localhost:3001/api/users/delete", {
-        email: user.email,
-      });
-      dispatch(setUser(userInitialState));
-      navigate("/");
+      //esta ruta funciona
+      const response = await axios.delete(
+        "http://localhost:3001/api/users/delete",
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          data: {
+            name: user.name,
+            lastname: user.lastname,
+            email: user.email,
+          },
+        }
+      );
     } catch (error) {}
+    dispatch(setUser(userInitialState));
+    navigate("/");
     handleClose();
   };
 
