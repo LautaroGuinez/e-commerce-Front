@@ -12,6 +12,7 @@ import { setUser } from "./state/user";
 import SearchBar from "./common/searchBar";
 import Puchease from "./common/puchase";
 import MyAcount from "./common/myAcount";
+import AllUsersView from "./views/allUsersView";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +40,7 @@ function App() {
         <Route path="/search" element={<SearchBar />} />
         <Route path="/puchease" element={<Puchease />} />
         <Route path="/myAcount" element={<MyAcount />} />
+        <Route path="/users" element={<AllUsersView />} />
       </Routes>
     </>
   );
