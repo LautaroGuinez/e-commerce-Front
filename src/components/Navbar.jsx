@@ -17,6 +17,7 @@ import { useNavigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { setUser, userInitialState } from "../state/user";
+import CategoryButton from "../common/category";
 
 /* 
 Lo comentado va a servir para la funcionalidad despues
@@ -24,7 +25,6 @@ Verificar que esta en uso o no, y descartar o descomentar
 */
 
 const pages = [];
-const settings = ["My Cars", "Logout"];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -122,6 +122,7 @@ function Navbar() {
           >
             VGAMER
           </Typography>
+         <CategoryButton />
           <Box
             sx={{
               flexGrow: 1,
@@ -139,7 +140,13 @@ function Navbar() {
                 md: "flex",
               },
             }}
-          >
+
+          > 
+          
+          
+          
+          
+          
             {pages.map((page, i) => (
               <Button
                 key={page}
