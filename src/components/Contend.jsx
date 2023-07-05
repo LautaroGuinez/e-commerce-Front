@@ -8,8 +8,8 @@ const Contend = ({ product }) => {
   return (
     <div className="products">
       {product.map((product, index) => (
-        <Link to={`/product/${product.id}`}>
-          <AllproductsCard key={index} {...product} />
+        <Link key={product.id} to={`/product/${product.id}`}>
+          <AllproductsCard {...product} />
         </Link>
       ))}
     </div>
