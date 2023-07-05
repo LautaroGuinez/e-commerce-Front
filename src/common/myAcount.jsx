@@ -3,20 +3,24 @@ import IconButton from "@mui/material/IconButton";
 import { Avatar, Typography, Grid, Paper } from "@mui/material";
 import EditProfileForm from "./formEditProfile";
 import DeleteProfile from "./formDeleteProfile";
-const myAcount = ({ user }) => {
-  const [edit, setEdit] = useState(<></>);
+
+const MyAccount = ({ user }) => {
+  const [edit, setEdit] = useState(null);
+
   const handleEditProfile = () => {
-    return setEdit(<EditProfileForm />);
+    setEdit(<EditProfileForm />);
   };
+
   const handleDeleteProfile = () => {
-    return setEdit(<DeleteProfile />);
+    setEdit(<DeleteProfile />);
   };
+
   return (
     <>
       <Paper elevation={3} style={{ padding: "20px" }}>
         <Grid container spacing={3} alignItems="center">
           <Grid item>
-            <Avatar src={"user.avatar"} alt={"user.name"} />
+            <Avatar src={user.avatar} alt={user.name} />
           </Grid>
           <Grid item>
             <Typography variant="h4">fg0016444@gmail.com</Typography>
@@ -27,8 +31,9 @@ const myAcount = ({ user }) => {
       </Paper>
       <IconButton onClick={handleEditProfile}>Edit Profile</IconButton>
       <IconButton onClick={handleDeleteProfile}>Delete Profile</IconButton>
-      <>{edit}</>
+      {edit}
     </>
   );
 };
-export default myAcount;
+
+export default MyAccount;

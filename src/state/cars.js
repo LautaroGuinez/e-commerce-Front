@@ -1,7 +1,7 @@
 import { createAction, createReducer } from "@reduxjs/toolkit";
 
-export const addToCars = createAction("ADD_TO_CARS ");
-export const removeToCars = createAction("REMOVE_TO_CARS ");
+export const addToCars = createAction("ADD_TO_CARS");
+export const removeToCars = createAction("REMOVE_TO_CARS");
 
 export const initialState = {
   cars: [],
@@ -23,3 +23,4 @@ const carsReducer = createReducer(initialState, {
 });
 
 export default carsReducer;
+
