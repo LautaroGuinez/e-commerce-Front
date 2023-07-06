@@ -9,6 +9,7 @@ import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
+import 'bootstrap/dist/css/bootstrap.css';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -52,7 +53,7 @@ const Sidebar = () => {
 
   return (
     <div style={{ marginTop: "25px" }}>
-      <Box sx={{ maxWidth: 700, flexGrow: 1 }}>
+      <Box sx={{ maxWidth: "100%", width: "100%", flexGrow: 1 }}>
         <Paper
           square
           elevation={0}
@@ -76,7 +77,7 @@ const Sidebar = () => {
                 <Box
                   component="img"
                   sx={{
-                    height: 255,
+                    height: 400,
                     display: "block",
                     maxWidth: "100%",
                     overflow: "hidden",
@@ -128,3 +129,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+
