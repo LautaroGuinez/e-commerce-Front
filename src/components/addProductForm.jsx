@@ -21,21 +21,27 @@ const AddProductFrom = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("holis",  {
+      name,
+      price,
+      description,
+      imgUrl,
+    })
     try {
       const product = await axios.post(
         "http://localhost:3001/api/products/submit",
         {
           name,
-          price,
+          price: Number(price),
           description,
           imgUrl,
         }
       );
+      console.log(product)
       const productId = product.data.id;
       await axios.post(
-        `  http://localhost:3001/api/productCategories/assignCategory/${productId}/${category.id}  `
+        `http://localhost:3001/api/category/assignCategory/${productId}/${category.id}`
       );
-
       prompt("Product Creacted");
       navigate(`http://localhost:3001/api/products/${productId}`);
     } catch (error) {
@@ -88,8 +94,9 @@ const AddProductFrom = () => {
             value={price}
             onChange={(e) => setPrice(e.target.value)}
             required
+            type="number"
             id="outlined-required"
-            label="Last Name"
+            label="Price"
             defaultValue=""
           />
         </div>
@@ -99,7 +106,7 @@ const AddProductFrom = () => {
             onChange={(e) => setDescription(e.target.value)}
             required
             id="outlined-required"
-            label="Email"
+            label="Description"
             defaultValue=""
           />
         </div>
@@ -109,18 +116,20 @@ const AddProductFrom = () => {
             onChange={(e) => setImgUrl(e.target.value)}
             required
             id="outlined-required"
-            label="Email"
+            label="imgURL"
             defaultValue=""
           />
         </div>
         <MenuList dense>
-          {allcategorys.map((category) => {
-            <MenuItem>
-              <ListItemText inset onClick={() => setCategory(category)}>
+          {allcategorys.map((category) => (
+            <MenuItem key={category.id}>
+              <ListItemText inset >
+                <Button onClick={() => setCategory(category)} >
                 {category.name}
+                </Button>
               </ListItemText>
-            </MenuItem>;
-          })}
+            </MenuItem>
+          ))}
         </MenuList>
 
         <div>
@@ -136,3 +145,5 @@ const AddProductFrom = () => {
     </div>
   );
 };
+
+export default AddProductFrom;

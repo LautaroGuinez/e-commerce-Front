@@ -13,6 +13,7 @@ import SearchBar from "./common/searchBar";
 import Puchease from "./common/puchase";
 import MyAcount from "./common/myAcount";
 import AllUsersView from "./views/allUsersView";
+import AddProductFrom from "./components/addProductForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ function App() {
         dispatch(setUser(user.data));
       })
       .catch((err) => console.error(err));
-  }, []);
+  }, [dispatch]);
   return (
     <>
       <Navbar />
@@ -41,6 +42,7 @@ function App() {
         <Route path="/puchease" element={<Puchease />} />
         <Route path="/myAcount" element={<MyAcount />} />
         <Route path="/users" element={<AllUsersView />} />
+        <Route path="/addProduct" element={<AddProductFrom/>} />
       </Routes>
     </>
   );
