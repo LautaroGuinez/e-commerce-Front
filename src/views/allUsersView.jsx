@@ -16,15 +16,43 @@ const AllUsersView = () => {
     const fetchUsers = async () => {
       try {
         const users = await axios.get("http://localhost:3001/api/users");
-        setAllUsers(users.data);
+        return setAllUsers(users.data);
       } catch (error) {
-        alert("Error fetching data:", error);
+        return alert("Error fetching data:", error);
       }
     };
 
     fetchUsers();
   }, []);
 
+  const handleDelete = async (user) => {
+    const { id } = user;
+    try {
+      await axios.delete(`http://localhost:3001/api/users/${id}/delete`);
+      return setAllUsers(allusers.filter((u) => u.id !== id));
+    } catch (error) {
+      return alert("Error fetching data:", error);
+    }
+  };
+  const handleMakeAdmin = async (user) => {
+    try {
+      if (user.admin == false) {
+        user.admin = true;
+        return await axios.put(
+          `http://localhost:3001/api/users/${id}/edit`,
+          user
+        );
+      } else {
+        user.admin = false;
+        return await axios.put(
+          `http://localhost:3001/api/users/${id}/edit`,
+          user
+        );
+      }
+    } catch (error) {
+      return alert("Error fetching data:", error);
+    }
+  };
   return (
     <>
       <TableContainer component={Paper}>
@@ -49,10 +77,18 @@ const AllUsersView = () => {
                 <TableCell align="right">{user.name}</TableCell>
                 <TableCell align="right">{user.lastname}</TableCell>
                 <TableCell align="right">{user.email}</TableCell>
-                <Button variant="contained" align="right">
+                <Button
+                  variant="contained"
+                  align="right"
+                  onClick={() => handleMakeAdmin(user)}
+                >
                   Make Admin
                 </Button>
-                <Button variant="contained" align="right">
+                <Button
+                  variant="contained"
+                  align="right"
+                  onClick={() => handleDelete(user)}
+                >
                   Delete
                 </Button>
               </TableRow>
