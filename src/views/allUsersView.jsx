@@ -8,6 +8,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
+import { useParams } from "react-router";
 
 const AllUsersView = () => {
   const [allusers, setAllUsers] = useState([]);
@@ -28,13 +29,14 @@ const AllUsersView = () => {
   const handleDelete = async (user) => {
     const { id } = user;
     try {
-      await axios.delete(`http://localhost:3001/api/users/${id}/delete`);
+      await axios.delete(`http://localhost:3001/api/users/${id}/delete`,user);
       return setAllUsers(allusers.filter((u) => u.id !== id));
     } catch (error) {
       return alert("Error fetching data:", error);
     }
   };
   const handleMakeAdmin = async (user) => {
+    const { id } = user;
     try {
       if (user.admin == false) {
         user.admin = true;
@@ -78,6 +80,7 @@ const AllUsersView = () => {
                 <TableCell align="right">{user.lastname}</TableCell>
                 <TableCell align="right">{user.email}</TableCell>
                 <Button
+                  type="submit"
                   variant="contained"
                   align="right"
                   onClick={() => handleMakeAdmin(user)}
@@ -85,6 +88,7 @@ const AllUsersView = () => {
                   Make Admin
                 </Button>
                 <Button
+                 type="submit"
                   variant="contained"
                   align="right"
                   onClick={() => handleDelete(user)}
