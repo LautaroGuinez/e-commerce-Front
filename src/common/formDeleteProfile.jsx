@@ -14,16 +14,15 @@ import { setUser, userInitialState } from "../state/user";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 
-
-const DeleteProfile = ({ onDelete }) => {
+const DeleteProfile = () => {
   const [open, setOpen] = React.useState(false);
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const handleOpen = () => {
     setOpen(true);
   };
-
   const handleClose = () => {
     setOpen(false);
   };
@@ -44,6 +43,7 @@ const DeleteProfile = ({ onDelete }) => {
           },
         }
       );
+      console.log(response);
     } catch (error) {}
     dispatch(setUser(userInitialState));
     navigate("/");
