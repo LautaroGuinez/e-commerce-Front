@@ -2,14 +2,15 @@ import React, { useState } from "react";
 
 import { TextField, Button, Grid, Paper } from "@mui/material";
 
-const user = {
-  name: "fer",
-  lastName: "gutierrez",
-  email: "fer@gmail.com",
-};
-const onSave = () => {};
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { setUser } from "../state/user";
+import { useNavigate } from "react-router";
 
 const EditProfileForm = () => {
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
   const [lastName, setLastName] = useState(user.lastName);
@@ -26,16 +27,33 @@ const EditProfileForm = () => {
     setLastName(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-
     const updatedUser = {
       name: name,
       lastName: lastName,
       email: email,
     };
+    await onSave(updatedUser);
+    dispatch(setUser(updatedUser));
+    navigate("/myAcount");
+  };
 
-    onSave(updatedUser);
+  const onSave = async (userEdit) => {
+    const dataUser = await axios.get(
+      `http://localhost:3001/api/users/${user.email}`
+    );
+    const id = String(dataUser.data.id);
+    const response = await axios.put(
+      `http://localhost:3001/api/users/edit/${id}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: userEdit,
+      }
+    );
+    return response;
   };
 
   return (

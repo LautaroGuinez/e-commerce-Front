@@ -1,4 +1,3 @@
-
 import * as React from "react";
 import Stack from "@mui/material/Stack";
 import cart from "../assest/cart.png";
@@ -40,8 +39,6 @@ const Cars = () => {
 
     return total.toFixed(2);
   };
-
-  console.log(cars);
   return (
     <>
       <div className="conteiner">

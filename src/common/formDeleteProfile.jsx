@@ -29,19 +29,12 @@ const DeleteProfile = () => {
 
   const handleDelete = async () => {
     try {
-      //esta ruta funciona
+      const dataUser = await axios.get(
+        `http://localhost:3001/api/users/${user.email}`
+      );
+      const id = String(dataUser.data.id);
       const response = await axios.delete(
-        "http://localhost:3001/api/users/delete",
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          data: {
-            name: user.name,
-            lastname: user.lastname,
-            email: user.email,
-          },
-        }
+        `http://localhost:3001/api/users/delete/${id}`
       );
       console.log(response);
     } catch (error) {}
