@@ -18,6 +18,7 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { setUser, userInitialState } from "../state/user";
 import CategoryButton from "../common/category";
+import ThemeProvider from "@mui/material";
 
 /* 
 Lo comentado va a servir para la funcionalidad despues
@@ -65,7 +66,10 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="static">
+    
+    <AppBar position="static"  sx={{
+      background: "#23252b",
+    }} >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <IconButton
