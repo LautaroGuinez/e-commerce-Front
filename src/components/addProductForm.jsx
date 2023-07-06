@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import MenuList from "@mui/material/MenuList";
+import MenuItem from "@mui/material/MenuItem";
+import ListItemText from "@mui/material/ListItemText";
 
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -12,6 +15,7 @@ const AddProductFrom = () => {
   const [description, setDescription] = useState("");
   const [imgUrl, setImgUrl] = useState("");
   const [category, setCategory] = useState({});
+  const [allcategorys, setAllcategorys] = useState([]);
 
   const navigate = useNavigate();
 
@@ -38,6 +42,18 @@ const AddProductFrom = () => {
       console.error("Error creating product and assigning category:", error);
     }
   };
+
+  useEffect(() => {
+    const fetchCategorys = async () => {
+      try {
+        const categorys = await axios.get("http://localhost:3001/api/category");
+        return setAllcategorys(categorys.data);
+      } catch (error) {
+        return alert("Error fetching data:", error);
+      }
+    };
+    fetchCategorys();
+  }, []);
 
   return (
     <div
@@ -97,6 +113,16 @@ const AddProductFrom = () => {
             defaultValue=""
           />
         </div>
+        <MenuList dense>
+          {allcategorys.map((category) => {
+            <MenuItem>
+              <ListItemText inset onClick={() => setCategory(category)}>
+                {category.name}
+              </ListItemText>
+            </MenuItem>;
+          })}
+        </MenuList>
+
         <div>
           <Button
             type="submit"

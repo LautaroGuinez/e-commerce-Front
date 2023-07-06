@@ -28,6 +28,7 @@ const AllUsersView = () => {
 
   const handleDelete = async (user) => {
     const { id } = user;
+
     try {
       await axios.delete(`http://localhost:3001/api/users/${id}/delete`,user);
       return setAllUsers(allusers.filter((u) => u.id !== id));
@@ -91,6 +92,7 @@ const AllUsersView = () => {
                  type="submit"
                   variant="contained"
                   align="right"
+                  type="submit"
                   onClick={() => handleDelete(user)}
                 >
                   Delete
