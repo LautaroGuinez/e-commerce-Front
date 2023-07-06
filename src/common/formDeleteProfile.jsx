@@ -13,13 +13,14 @@ import axios from "axios";
 import { setUser, userInitialState } from "../state/user";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
-const DeleteProfile = () => {
-  const navigate = useNavigate();
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+
+const DeleteProfile = ({ onDelete }) => {
+  const [open, setOpen] = React.useState(false);
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
-
-  const [open, setOpen] = React.useState(false);
-
+  const navigate = useNavigate();
   const handleOpen = () => {
     setOpen(true);
   };

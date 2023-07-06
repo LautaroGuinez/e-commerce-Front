@@ -1,6 +1,7 @@
+
 import * as React from "react";
 import Stack from "@mui/material/Stack";
-import cart from "../assest/cart.png"
+import cart from "../assest/cart.png";
 import { Link } from "react-router-dom";
 import "../styles/cars.css";
 import {
@@ -13,37 +14,37 @@ import {
 } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import Button from "@mui/material/Button";
+import { removeToCars, addQuantity, subtractQuantity } from "../state/cars";
 
 const Cars = () => {
+  const dispatch = useDispatch();
+  const cars = useSelector((state) => state.cars);
+  console.log(cars.id);
 
-  //hacer la funcionalidad de sumar cantidad
-  const handleSumarCantidad = (productId) => {};
-  //hacer la funcionalidad de restar cantidad
+  const handleSumarCantidad = (product) => {
+    dispatch(addQuantity(product));
+  };
 
-  const handleRestarCantidad = (productId) => {};
-  //hacer la funcionalidad de eliminar cantidad
-
-  const handleEliminarProducto = (productId) => {};
-  //funcionalidad de sumar el total
-
+  const handleRestarCantidad = (product) => {
+    dispatch(subtractQuantity(product));
+  };
+  const handleEliminarProducto = (product) => {
+    dispatch(removeToCars(product));
+  };
   const calcularPrecioTotal = () => {
     let total = 0;
 
-
     cars.cars.forEach((product) => {
-
       total += product.price * product.quantity;
     });
 
     return total.toFixed(2);
   };
 
-  const cars = useSelector((state) => state.cars);
-console.log(cars)
+  console.log(cars);
   return (
     <>
       <div className="conteiner">
- 
         {cars.cars && cars.cars.length > 0 ? (
           <Table className="table">
             <TableHead>
@@ -63,7 +64,7 @@ console.log(cars)
                   </TableCell>
                   <TableCell>{product.price}</TableCell>
                   <TableCell>
-                    {product.quantity > 0 ? product.quantity : 1}
+                    {product.quantity > 0 ? product.quantity : 0}
                   </TableCell>
                   <TableCell>
                     {(product.price * product.quantity).toFixed(2)}
@@ -71,19 +72,19 @@ console.log(cars)
                   <TableCell>
                     <Stack direction="row" spacing={2}>
                       <Button
-                        onClick={() => handleSumarCantidad(product.id)}
+                        onClick={() => handleSumarCantidad(product)}
                         variant="contained"
                       >
                         +
                       </Button>
                       <Button
-                        onClick={() => handleRestarCantidad(product.id)}
+                        onClick={() => handleRestarCantidad(product)}
                         variant="contained"
                       >
                         -
                       </Button>
                       <Button
-                        onClick={() => handleEliminarProducto(product.id)}
+                        onClick={() => handleEliminarProducto(product)}
                         variant="contained"
                       >
                         Delete
@@ -106,15 +107,14 @@ console.log(cars)
             </TableBody>
           </Table>
         ) : (
-
-          <Box  textAlign="center">
-
+          <Box textAlign="center">
             <img src={cart} alt="fd" />
             <p>Start a shopping cart!</p>
 
-            <Button component={Link} to="/">home</Button>
+            <Button component={Link} to="/">
+              home
+            </Button>
           </Box>
-          
         )}
       </div>
     </>

@@ -6,15 +6,14 @@ import DeleteProfile from "./formDeleteProfile";
 import { useSelector } from "react-redux";
 import TableCardProfile from "./tableCardProfile";
 
-const myAcount = () => {
-  const user = useSelector((state) => state.user);
-
-  const [edit, setEdit] = useState(<TableCardProfile />);
+const MyAccount = ({ user }) => {
+  const [edit, setEdit] = useState(null);
   const handleEditProfile = () => {
-    return setEdit(<EditProfileForm />);
+    setEdit(<EditProfileForm />);
   };
+
   const handleDeleteProfile = () => {
-    return setEdit(<DeleteProfile />);
+    setEdit(<DeleteProfile />);
   };
   const handleMyCarts = () => {
     setEdit(<TableCardProfile />);
@@ -46,4 +45,5 @@ const myAcount = () => {
     </>
   );
 };
-export default myAcount;
+
+export default MyAccount;

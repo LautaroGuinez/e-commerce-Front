@@ -8,7 +8,6 @@ import Contend from "../components/Contend";
 const SearchBar = () => {
   const [search, setSearch] = useState("");
   const [product, setProduct] = useState([]);
-
   const handleSearch = async (e) => {
     setSearch(e.target.value);
   };
@@ -20,7 +19,7 @@ const SearchBar = () => {
       } else {
         setProduct([]);
       }
-    }, 500);
+    }, 100);
 
     return () => clearTimeout(delaySearch);
   }, [search]);
