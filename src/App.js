@@ -2,18 +2,18 @@ import React, { useEffect } from "react";
 import { Route, Routes } from "react-router";
 import { useDispatch } from "react-redux";
 import axios from "axios";
-import Home from "./components/home";
-import ProductsCards from "./common/productsCards";
-import Register from "./common/register";
-import Login from "./common/login";
-import Cars from "./common/cars";
+import Home from "./views/home";
+import ProductsCards from "./views/productsCards";
+import Register from "./views/register";
+import Login from "./views/login";
+import Cars from "./views/cars";
 import Navbar from "./components/Navbar";
 import { setUser } from "./state/user";
-import SearchBar from "./common/searchBar";
-import Puchease from "./common/puchase";
-import MyAcount from "./common/myAcount";
+import SearchBar from "./views/searchBar";
+import Puchease from "./views/puchase";
+import MyAcount from "./views/myAcount";
 import AllUsersView from "./views/allUsersView";
-import AddProductFrom from "./components/addProductForm";
+import AddProductFrom from "./views/addProductForm";
 import EditProductForm from "./views/editProductForm";
 import CategoryView from "./views/categoryView";
 
@@ -41,7 +41,6 @@ function App() {
         <Route path="/product/:id" element={<ProductsCards />} />
         <Route path="/cars" element={<Cars />} />
         <Route path="/search" element={<SearchBar />} />
-        <Route path="/puchease" element={<Puchease />} />
         <Route path="/myAcount" element={<MyAcount />} />
         <Route path="/users" element={<AllUsersView />} />
         <Route path="/addProduct" element={<AddProductFrom />} />

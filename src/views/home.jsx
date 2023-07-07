@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../common/sidebar";
 import { Box } from "@mui/material";
-import Contend from "./Contend";
+import Contend from "../components/Contend";
 import axios from "axios";
 
 const Home = () => {

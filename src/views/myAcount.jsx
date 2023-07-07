@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import IconButton from "@mui/material/IconButton";
 import { Avatar, Typography, Grid, Paper, Button } from "@mui/material";
 import EditProfileForm from "./formEditProfile";
-import DeleteProfile from "./formDeleteProfile";
+import DeleteProfile from "../common/formDeleteProfile";
 import { useSelector } from "react-redux";
-import TableCardProfile from "./tableCardProfile";
+import TableCardProfile from "../common/tableCardProfile";
 
 const MyAccount = () => {
   const [edit, setEdit] = useState(<TableCardProfile />);
