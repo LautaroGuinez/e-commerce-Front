@@ -12,54 +12,31 @@ import axios from "axios";
 const AddProductFrom = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
+  const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [imgUrl, setImgUrl] = useState("");
-  const [category, setCategory] = useState({});
-  const [allcategorys, setAllcategorys] = useState([]);
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("holis",  {
-      name,
-      price,
-      description,
-      imgUrl,
-    })
     try {
       const product = await axios.post(
         "http://localhost:3001/api/products/submit",
         {
           name,
           price: Number(price),
+          category,
           description,
           imgUrl,
         }
       );
-      console.log(product)
-      const productId = product.data.id;
-      await axios.post(
-        `http://localhost:3001/api/category/assignCategory/${productId}/${category.id}`
-      );
-      prompt("Product Creacted");
-      navigate(`http://localhost:3001/api/products/${productId}`);
+      console.log(product);
+      alert(product.name);
     } catch (error) {
-      console.error("Error creating product and assigning category:", error);
+      alert("Error al crear el producto");
     }
   };
-
-  useEffect(() => {
-    const fetchCategorys = async () => {
-      try {
-        const categorys = await axios.get("http://localhost:3001/api/category");
-        return setAllcategorys(categorys.data);
-      } catch (error) {
-        return alert("Error fetching data:", error);
-      }
-    };
-    fetchCategorys();
-  }, []);
 
   return (
     <div
@@ -102,6 +79,16 @@ const AddProductFrom = () => {
         </div>
         <div>
           <TextField
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            required
+            id="outlined-required"
+            label="Category"
+            defaultValue=""
+          />
+        </div>
+        <div>
+          <TextField
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
@@ -114,24 +101,11 @@ const AddProductFrom = () => {
           <TextField
             value={imgUrl}
             onChange={(e) => setImgUrl(e.target.value)}
-            required
             id="outlined-required"
             label="imgURL"
             defaultValue=""
           />
         </div>
-        <MenuList dense>
-          {allcategorys.map((category) => (
-            <MenuItem key={category.id}>
-              <ListItemText inset >
-                <Button onClick={() => setCategory(category)} >
-                {category.name}
-                </Button>
-              </ListItemText>
-            </MenuItem>
-          ))}
-        </MenuList>
-
         <div>
           <Button
             type="submit"
