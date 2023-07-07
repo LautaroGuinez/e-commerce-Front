@@ -5,10 +5,10 @@ import EditProfileForm from "./formEditProfile";
 import DeleteProfile from "./formDeleteProfile";
 import { useSelector } from "react-redux";
 import TableCardProfile from "./tableCardProfile";
-import Cars from "./cars";
+import Button from "@mui/material/Button";
 
 const MyAccount = () => {
-  const [edit, setEdit] = useState(<Cars />);
+  const [edit, setEdit] = useState(<TableCardProfile />);
   const user = useSelector((state) => state.user);
   const handleEditProfile = () => {
     setEdit(<EditProfileForm />);
@@ -41,30 +41,23 @@ const MyAccount = () => {
           </Grid>
         </Grid>
       </Paper>
-      <IconButton
-        style={{
-          backgroundColor: "limegreen",
-        }}
+      <Button
         onClick={handleMyCarts}
-      >
-        My shopping cart
-      </IconButton>
-      <IconButton
+        variant="contained"
+        color="success"
         style={{
           backgroundColor: "limegreen",
         }}
-        onClick={handleEditProfile}
       >
+        Shopping cart
+      </Button>
+      <Button color="secondary" onClick={handleEditProfile}>
         Edit Profile
-      </IconButton>
-      <IconButton
-        style={{
-          backgroundColor: "Green",
-        }}
-        onClick={handleDeleteProfile}
-      >
+      </Button>
+      <Button variant="outlined" color="error" onClick={handleDeleteProfile}>
         Delete Profile
-      </IconButton>
+      </Button>
+
       {edit}
     </>
   );
