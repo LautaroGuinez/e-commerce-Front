@@ -3,14 +3,14 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 import { setUser } from "../state/user";
 import TextField from "@mui/material/TextField";
-import { withStyles } from "@material-ui/core/styles";
+import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router";
 import { Grid } from "@mui/material";
 import { Card, CardContent } from "@mui/material";
 
-const CustomTextField = withStyles((theme) => ({
+const CustomTextField = styled((theme) => ({
   root: {
     "& label": {
       color: "white",
