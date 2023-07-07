@@ -78,6 +78,7 @@ const CategoryButton = () => {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const uniqueCategories = [];
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -114,11 +115,22 @@ const CategoryButton = () => {
         open={open}
         onClose={handleClose}
       >
-        {product.map((product) => (
-          <MenuItem disableRipple key={product.id}>
-            {product.category}
-          </MenuItem>
-        ))}
+        <div>
+          {product.map((product) => {
+            if (
+              product.category &&
+              !uniqueCategories.includes(product.category)
+            ) {
+              uniqueCategories.push(product.category);
+              return (
+                <MenuItem disableRipple key={product.id}>
+                  {product.category}
+                </MenuItem>
+              );
+            }
+            return null;
+          })}
+        </div>
       </StyledMenu>
     </div>
   );
