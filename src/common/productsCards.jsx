@@ -11,12 +11,24 @@ import axios from "axios";
 import "../../src/styles/productsCar.css";
 import { addToCars } from "../state/cars";
 import imageNotFound from "../assest/image_not_found.jpg";
+import { styled } from "@mui/material";
+
+const StyledCard = styled(Card)(({ theme }) => ({
+  borderRadius: 8,
+  backgroundColor: "#181a1b",
+  color: "white",
+  transition: "box-shadow 0.3s ease-in-out",
+  "&:hover": {
+    outline: "5px solid #2be01f ", // Cambia el valor para ajustar el grosor del borde
+  },
+}));
 
 const ProductCards = (props) => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   const navigate = useNavigate();
+  const userAdmin = useSelector((state) => state.user);
 
   const handleAddItem = (product) => {
     dispatch(addToCars(product));
@@ -48,7 +60,13 @@ const ProductCards = (props) => {
   return (
     <div>
       <div className="conteinerProducts">
-        <Card className="card">
+        <StyledCard
+          className="card"
+          style={{
+            borderRadius: "10px",
+            backgroundColor: "gray",
+          }}
+        >
           <CardActionArea component={Link} to={`/product/${product.id}`}>
             <CardContent className="cardContend">
               <div>
@@ -61,29 +79,55 @@ const ProductCards = (props) => {
                 <p className="productPrice">{product.price}</p>
 
                 <Button
+                  sx={{
+                    backgroundColor: "#7200ff",
+                    "&:hover": {
+                      background: "#2be01f",
+                    },
+                    marginRight: "10px",
+                  }}
                   onClick={() => handleAddItem({ ...product })}
                   variant="contained"
                 >
                   Add To Car
                 </Button>
-                <Button
-                  component={Link}
-                  to={`/${id}/edit-product`}
-                  variant="contained"
-                >
-                  Edit
-                </Button>
-                <Button
-                  type="submit"
-                  onClick={handleDelete}
-                  variant="contained"
-                >
-                  Delete
-                </Button>
+                {userAdmin.admin == true ? (
+                  <>
+                    <Button
+                      sx={{
+                        backgroundColor: "#7200ff",
+                        "&:hover": {
+                          background: "#2be01f",
+                        },
+                        marginRight: "10px",
+                      }}
+                      component={Link}
+                      to={`/${id}/edit-product`}
+                      variant="contained"
+                    >
+                      Edit
+                    </Button>
+                    <Button
+                      sx={{
+                        backgroundColor: "#7200ff",
+                        "&:hover": {
+                          background: "#2be01f",
+                        },
+                      }}
+                      type="submit"
+                      onClick={handleDelete}
+                      variant="contained"
+                    >
+                      Delete
+                    </Button>
+                  </>
+                ) : (
+                  <></>
+                )}
               </div>
             </CardContent>
           </CardActionArea>
-        </Card>
+        </StyledCard>
       </div>
     </div>
   );

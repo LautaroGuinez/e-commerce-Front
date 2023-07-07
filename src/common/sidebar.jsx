@@ -17,19 +17,19 @@ const Sidebar = () => {
     {
       id: 1,
       imgUrl:
-        "https://http2.mlstatic.com/D_NQ_NP_944449-MLA50305077491_062022-O.webp",
+        "https://cdn.jsdelivr.net/gh/persano/BannersWebMaximus/top-slider/pcArmadasNew.jpg",
       titulo: "teclado",
     },
     {
       id: 2,
       imgUrl:
-        "https://medias.musimundo.com/medias/00431006-144267-144267-02-144267-02.jpg-size515?context=bWFzdGVyfGltYWdlc3w4MDI2N3xpbWFnZS9qcGVnfGgwNC9oNTcvMTA0NDA3MzI4Njg2MzgvMDA0MzEwMDYtMTQ0MjY3LTE0NDI2N18wMi0xNDQyNjdfMDIuanBnX3NpemU1MTV8NjkwMDRjMmI1ZWMxY2Q1MmNkZTIyZTE1ZGY2Nzg3OGQ5MmFmZDU4MGMzOTYwMzY2YTM0ZThmMTYyNWIzNGQ5YQ",
+        "https://cdn.jsdelivr.net/gh/persano/BannersWebMaximus/top-slider/placasDeVideoNew.jpg",
       titulo: "tv",
     },
     {
       id: 3,
       imgUrl:
-        "https://http2.mlstatic.com/D_NQ_NP_803086-MLA47920649105_102021-O.webp",
+        "https://cdn.jsdelivr.net/gh/persano/BannersWebMaximus/top-slider/asusDestornillador.webp",
       titulo: "consola",
     },
   ];
@@ -51,7 +51,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div style={{ marginTop: "25px" }}>
+    <div style={{ marginTop: "30px" }}>
       <Box sx={{ maxWidth: "100%", width: "100%", flexGrow: 1 }}>
         <Paper
           square
@@ -59,9 +59,10 @@ const Sidebar = () => {
           sx={{
             display: "flex",
             alignItems: "center",
-            height: 80,
+            minHeight: "100%",
             pl: 2,
             bgcolor: "background.default",
+            background: "transparent",
           }}
         ></Paper>
         <AutoPlaySwipeableViews
@@ -76,9 +77,9 @@ const Sidebar = () => {
                 <Box
                   component="img"
                   sx={{
-                    height: 400,
+                    height: "600px",
                     display: "block",
-                    maxWidth: "100%",
+                    height: "100%",
                     overflow: "hidden",
                     width: "100%",
                   }}

@@ -18,6 +18,7 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { setUser, userInitialState } from "../state/user";
 import CategoryButton from "../common/category";
+import GroupIcon from "@mui/icons-material/Group";
 import ThemeProvider from "@mui/material";
 
 /* 
@@ -48,6 +49,7 @@ function Navbar() {
       .then((res) => res.data)
       .then(() => {
         dispatch(setUser(userInitialState));
+        localStorage.removeItem("cars");
         handleMenuClose();
         navigate("/");
       });
@@ -66,10 +68,12 @@ function Navbar() {
   };
 
   return (
-    
-    <AppBar position="static"  sx={{
-      background: "#23252b",
-    }} >
+    <AppBar
+      position="static"
+      sx={{
+        background: "black",
+      }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <IconButton
@@ -126,7 +130,7 @@ function Navbar() {
           >
             VGAMER
           </Typography>
-         <CategoryButton />
+          <CategoryButton />
           <Box
             sx={{
               flexGrow: 1,
@@ -144,13 +148,7 @@ function Navbar() {
                 md: "flex",
               },
             }}
-
-          > 
-          
-          
-          
-          
-          
+          >
             {pages.map((page, i) => (
               <Button
                 key={page}
@@ -162,8 +160,31 @@ function Navbar() {
               </Button>
             ))}
           </Box>
+          {user.admin == true ? (
+            <IconButton
+              sx={{
+                "&:hover": {
+                  background: "  #2be01f ",
+                },
+              }}
+              size="large"
+              aria-label="search"
+              color="inherit"
+              component={Link}
+              to="/users"
+            >
+              <GroupIcon />
+            </IconButton>
+          ) : (
+            <></>
+          )}
 
           <IconButton
+            sx={{
+              "&:hover": {
+                background: "  #2be01f ",
+              },
+            }}
             size="large"
             aria-label="search"
             color="inherit"
@@ -176,6 +197,11 @@ function Navbar() {
           {user.email === null ? (
             <>
               <IconButton
+                sx={{
+                  "&:hover": {
+                    background: "  #2be01f ",
+                  },
+                }}
                 size="large"
                 aria-label="account"
                 color="inherit"
@@ -207,6 +233,11 @@ function Navbar() {
           ) : (
             <>
               <IconButton
+                sx={{
+                  "&:hover": {
+                    background: "  #2be01f ",
+                  },
+                }}
                 size="large"
                 aria-label="search"
                 color="inherit"
@@ -216,6 +247,11 @@ function Navbar() {
                 <ShoppingCartIcon />
               </IconButton>
               <IconButton
+                sx={{
+                  "&:hover": {
+                    background: "  #2be01f ",
+                  },
+                }}
                 size="large"
                 aria-label="account"
                 color="inherit"

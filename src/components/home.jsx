@@ -14,14 +14,11 @@ const Home = () => {
 
   return (
     <>
-      <Box
-        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
-      >
-        <Sidebar />
-      </Box>
-
+      <Sidebar />
+      <p>
+        <h2>Productos</h2>
+      </p>
       <Contend product={product} />
-
     </>
   );
 };

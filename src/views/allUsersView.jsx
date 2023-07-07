@@ -9,9 +9,11 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import { useParams } from "react-router";
+import { useSelector } from "react-redux";
 
 const AllUsersView = () => {
   const [allusers, setAllUsers] = useState([]);
+  const userSuperAdmin = useSelector((state) => state.user);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -30,7 +32,7 @@ const AllUsersView = () => {
     const { id } = user;
 
     try {
-      await axios.delete(`http://localhost:3001/api/users/${id}/delete`, user);
+      await axios.delete(`http://localhost:3001/api/users/delete/${id}`, user);
       return setAllUsers(allusers.filter((u) => u.id !== id));
     } catch (error) {
       return alert("Error fetching data:", error);
@@ -84,18 +86,22 @@ const AllUsersView = () => {
                   type="submit"
                   variant="contained"
                   align="right"
-                  onClick={() => handleMakeAdmin(user)}
-                >
-                  Make Admin
-                </Button>
-                <Button
-                  type="submit"
-                  variant="contained"
-                  align="right"
                   onClick={() => handleDelete(user)}
                 >
                   Delete
                 </Button>
+                {userSuperAdmin.super_admin === true ? (
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    align="right"
+                    onClick={() => handleMakeAdmin(user)}
+                  >
+                    Make Admin
+                  </Button>
+                ) : (
+                  <></>
+                )}
               </TableRow>
             ))}
           </TableBody>
