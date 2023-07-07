@@ -4,10 +4,14 @@ import CardContent from "@mui/material/CardContent";
 import { CardActionArea } from "@mui/material";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+
+
+
 import Button from "@mui/material/Button";
 import axios from "axios";
 import "../../src/styles/productsCar.css";
 import { addToCars } from "../state/cars";
+import imageNotFound from "../assest/image_not_found.jpg";
 
 const navigate = useNavigate();
 
@@ -43,7 +47,7 @@ const ProductCards = (props) => {
             <CardContent className="cardContend">
               <div>
                 <h2>{product.name}</h2>
-                <img src={product.imgUrl} alt={product.name} />
+                <img src={product.imgUrl || imageNotFound} alt={product.name} />
               </div>
               <div>
                 <p className="description">{product.description} </p>
