@@ -14,9 +14,6 @@ import Puchease from "./common/puchase";
 import MyAcount from "./common/myAcount";
 import AllUsersView from "./views/allUsersView";
 import AddProductFrom from "./components/addProductForm";
-
-import Checkout from "./views/checkout";
-
 import EditProductForm from "./views/editProductForm";
 import CategoryView from "./views/categoryView";
 
@@ -48,7 +45,7 @@ function App() {
         <Route path="/myAcount" element={<MyAcount />} />
         <Route path="/users" element={<AllUsersView />} />
         <Route path="/addProduct" element={<AddProductFrom />} />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/checkout" element={<Puchease />} />
         <Route path="/:id/edit-product" element={<EditProductForm />} />
         <Route path="/category/:name" element={<CategoryView />} />
       </Routes>
