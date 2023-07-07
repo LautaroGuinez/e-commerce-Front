@@ -96,7 +96,7 @@ const Cars = () => {
                 </TableCell>
                 <TableCell>{calcularPrecioTotal()}</TableCell>
                 <TableCell>
-                  <Link to="/puchease">
+                  <Link to="/checkout">
                     <Button variant="contained">To pay</Button>
                   </Link>
                 </TableCell>

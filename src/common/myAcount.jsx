@@ -34,9 +34,8 @@ const MyAccount = () => {
             />
           </Grid>
           <Grid item>
-            <Typography variant="h4">
-              {user.name} {user.lastname}
-            </Typography>
+            <Typography variant="h4">{user.name}</Typography>
+            <Typography variant="h4">{user.lastname}</Typography>
             <Typography variant="subtitle1">{user.email}</Typography>
           </Grid>
         </Grid>

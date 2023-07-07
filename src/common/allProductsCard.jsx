@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, CardContent } from "@mui/material";
 import { styled } from "@mui/system";
+import imageNotFound from "../assest/image_not_found.jpg";
 
 const StyledCard = styled(Card)(({ theme }) => ({
   borderRadius: 8,
@@ -16,7 +17,11 @@ const AllproductsCard = (prop) => {
   return (
     <StyledCard>
       <div className="posterContainer">
-        <img src={prop.imgUrl} alt="Product Image" className="poster" />
+        <img
+          src={prop.imgUrl || imageNotFound}
+          alt="Product Image"
+          className="poster"
+        />
       </div>
       <CardContent>
         <p className="title">{prop.name}</p>
@@ -26,7 +31,3 @@ const AllproductsCard = (prop) => {
 };
 
 export default AllproductsCard;
-
-
-
-
