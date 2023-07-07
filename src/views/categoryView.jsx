@@ -9,6 +9,7 @@ import { styled } from "@mui/material";
 import "../../src/styles/productsCar.css";
 import imageNotFound from "../assest/image_not_found.jpg";
 import { CardActionArea } from "@mui/material";
+import { Box } from "@mui/material";
 
 const StyledCard = styled(Card)(({ theme }) => ({
   borderRadius: 8,
@@ -41,32 +42,34 @@ const CategoryView = () => {
 
   return (
     <>
-      <StyledCard
-        className="card"
-        style={{
-          borderRadius: "10px",
-          backgroundColor: "gray",
-        }}
-      >
-        {filteredProducts.map((product) => (
-          <CardActionArea
-            key={product.id}
-            component={Link}
-            to={`/product/${product.id}`}
-          >
-            <div className="posterContainer">
-              <img
-                src={product.imgUrl || imageNotFound}
-                alt="Product Image"
-                className="poster"
-              />
-            </div>
-            <CardContent>
-              <p className="title">{product.name}</p>
-            </CardContent>
-          </CardActionArea>
-        ))}
-      </StyledCard>
+      <Box sx={{}}>
+        <StyledCard
+          className="card"
+          style={{
+            borderRadius: "10px",
+            backgroundColor: "transparent",
+          }}
+        >
+          {filteredProducts.map((product) => (
+            <CardActionArea
+              key={product.id}
+              component={Link}
+              to={`/product/${product.id}`}
+            >
+              <div className="posterContainer">
+                <img
+                  src={product.imgUrl || imageNotFound}
+                  alt="Product Image"
+                  className="poster"
+                />
+              </div>
+              <CardContent>
+                <p className="title">{product.name}</p>
+              </CardContent>
+            </CardActionArea>
+          ))}
+        </StyledCard>
+      </Box>
     </>
   );
 };

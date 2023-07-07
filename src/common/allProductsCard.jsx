@@ -15,7 +15,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
 
 const AllproductsCard = (prop) => {
   return (
-    <StyledCard>
+    <StyledCard sx={{ marginTop: "20px", marginRight: "20px" }}>
       <div className="posterContainer">
         <img
           src={prop.imgUrl || imageNotFound}
