@@ -4,6 +4,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router";
 import axios from "axios";
+import { useParams } from "react-router";
 
 const EditProductForm = () => {
   const [name, setName] = useState("");
@@ -12,17 +13,15 @@ const EditProductForm = () => {
   const [description, setDescription] = useState("");
   const [imgUrl, setImgUrl] = useState("");
   const [product, setProduct] = useState([]);
-
   const { id } = useParams();
-
   const navigate = useNavigate();
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       const editedProduct = await axios.put(
         `http://localhost:3001/api/products/${id}/edit`,
         {
-          id,
           name,
           price: Number(price),
           category,

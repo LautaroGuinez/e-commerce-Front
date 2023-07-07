@@ -13,7 +13,7 @@ const EditProfileForm = () => {
   const navigate = useNavigate();
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
-  const [lastName, setLastName] = useState(user.lastName);
+  const [lastname, setLastname] = useState(user.lastName);
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -24,14 +24,14 @@ const EditProfileForm = () => {
   };
 
   const handleLastNameChange = (event) => {
-    setLastName(event.target.value);
+    setLastname(event.target.value);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const updatedUser = {
       name: name,
-      lastName: lastName,
+      lastname: lastname,
       email: email,
     };
     await onSave(updatedUser);
@@ -74,7 +74,7 @@ const EditProfileForm = () => {
               label="Last Name"
               variant="outlined"
               fullWidth
-              value={lastName}
+              value={lastname}
               onChange={handleLastNameChange}
             />
           </Grid>

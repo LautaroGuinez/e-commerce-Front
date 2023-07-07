@@ -2,23 +2,20 @@ import React, { useEffect, useState } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { CardActionArea } from "@mui/material";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
-
-
+import { useNavigate } from "react-router";
 import Button from "@mui/material/Button";
 import axios from "axios";
 import "../../src/styles/productsCar.css";
 import { addToCars } from "../state/cars";
 import imageNotFound from "../assest/image_not_found.jpg";
 
-const navigate = useNavigate();
-
 const ProductCards = (props) => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const [product, setProduct] = useState([]);
+  const navigate = useNavigate();
 
   const handleAddItem = (product) => {
     dispatch(addToCars(product));
@@ -36,8 +33,6 @@ const ProductCards = (props) => {
 
     fetchProduct();
   }, [id]);
-
-  const hadleEdit = () => navigate(`/${id}/edit-product`);
 
   return (
     <div>
@@ -60,7 +55,11 @@ const ProductCards = (props) => {
                 >
                   Add To Car
                 </Button>
-                <Button onClick={hadleEdit} variant="contained">
+                <Button
+                  component={Link}
+                  to={`/${id}/edit-product`}
+                  variant="contained"
+                >
                   Edit
                 </Button>
                 <Button
