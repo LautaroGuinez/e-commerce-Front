@@ -41,10 +41,10 @@ const Cars = () => {
 
     return total.toFixed(2);
   };
-
+  const local = localStorage.getItem("reduxState");
   return (
     <Box textAlign="center" p={3}>
-      {cars.cars && cars.cars.length > 0 ? (
+      {cars.cars && cars.cars.length > 0 && local ? (
         <Table>
           <TableHead>
             <TableRow>

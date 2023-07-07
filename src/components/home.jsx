@@ -7,9 +7,10 @@ import axios from "axios";
 const Home = () => {
   const [product, setProduct] = useState([]);
   useEffect(() => {
-    axios
-      .get("http://localhost:3001/api/products")
-      .then((res) => setProduct(res.data));
+    axios.get("http://localhost:3001/api/products").then((res) => {
+      localStorage.removeItem("reduxState");
+      setProduct(res.data);
+    });
   }, []);
 
   return (

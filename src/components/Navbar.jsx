@@ -49,7 +49,7 @@ function Navbar() {
       .then((res) => res.data)
       .then(() => {
         dispatch(setUser(userInitialState));
-        localStorage.removeItem("cars");
+        localStorage.removeItem("reduxState");
         handleMenuClose();
         navigate("/");
       });
