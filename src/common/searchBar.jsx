@@ -8,8 +8,9 @@ import Contend from "../components/Contend";
 const SearchBar = () => {
   const [search, setSearch] = useState("");
   const [product, setProduct] = useState([]);
+
   const handleSearch = async (e) => {
-    setSearch(e.target.value);
+    setSearch(e.target.value.toLowerCase());
   };
 
   useEffect(() => {

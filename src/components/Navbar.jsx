@@ -20,6 +20,7 @@ import { setUser, userInitialState } from "../state/user";
 import CategoryButton from "../common/category";
 import GroupIcon from "@mui/icons-material/Group";
 import ThemeProvider from "@mui/material";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 
 /* 
 Lo comentado va a servir para la funcionalidad despues
@@ -161,20 +162,36 @@ function Navbar() {
             ))}
           </Box>
           {user.admin == true ? (
-            <IconButton
-              sx={{
-                "&:hover": {
-                  background: "  #2be01f ",
-                },
-              }}
-              size="large"
-              aria-label="search"
-              color="inherit"
-              component={Link}
-              to="/users"
-            >
-              <GroupIcon />
-            </IconButton>
+            <>
+              <IconButton
+                sx={{
+                  "&:hover": {
+                    background: "  #2be01f ",
+                  },
+                }}
+                size="large"
+                aria-label="search"
+                color="inherit"
+                component={Link}
+                to="/addProduct"
+              >
+                <AddCircleIcon />
+              </IconButton>
+              <IconButton
+                sx={{
+                  "&:hover": {
+                    background: "  #2be01f ",
+                  },
+                }}
+                size="large"
+                aria-label="search"
+                color="inherit"
+                component={Link}
+                to="/users"
+              >
+                <GroupIcon />
+              </IconButton>
+            </>
           ) : (
             <></>
           )}

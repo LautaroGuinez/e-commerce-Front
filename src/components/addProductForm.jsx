@@ -1,10 +1,30 @@
 import React, { useEffect, useState } from "react";
-
+import axios from "axios";
+import { setUser } from "../state/user";
+import { withStyles } from "@material-ui/core/styles";
+import { useNavigate } from "react-router";
+import { Grid } from "@mui/material";
+import { Card, CardContent } from "@mui/material";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { useNavigate } from "react-router";
-import axios from "axios";
+
+const CustomTextField = withStyles((theme) => ({
+  root: {
+    "& label": {
+      color: "white",
+    },
+    "& label.Mui-focused": {
+      color: "white",
+    },
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "#2be01f",
+    },
+    "& .MuiInputBase-input": {
+      color: "white",
+    },
+  },
+}))(TextField);
 
 const AddProductFrom = () => {
   const [name, setName] = useState("");
@@ -44,75 +64,123 @@ const AddProductFrom = () => {
         height: "80vh",
       }}
     >
-      <Box
-        onSubmit={handleSubmit}
-        component="form"
-        sx={{
-          "& .MuiTextField-root": { m: 1, width: "30ch" },
-        }}
-        noValidate
-        autoComplete="off"
-      >
-        <div>
-          <TextField
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-            id="outlined-required"
-            label="Name"
-            defaultValue=""
-          />
-        </div>
-        <div>
-          <TextField
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-            required
-            type="number"
-            id="outlined-required"
-            label="Price"
-            defaultValue=""
-          />
-        </div>
-        <div>
-          <TextField
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            required
-            id="outlined-required"
-            label="Category"
-            defaultValue=""
-          />
-        </div>
-        <div>
-          <TextField
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-            id="outlined-required"
-            label="Description"
-            defaultValue=""
-          />
-        </div>
-        <div>
-          <TextField
-            value={imgUrl}
-            onChange={(e) => setImgUrl(e.target.value)}
-            id="outlined-required"
-            label="imgURL"
-            defaultValue=""
-          />
-        </div>
-        <div>
-          <Button
-            type="submit"
-            style={{ marginLeft: "90px", marginTop: "15px" }}
-            variant="contained"
-          >
-            Create Product
-          </Button>
-        </div>
-      </Box>
+      <Grid container>
+        <Card
+          style={{
+            maxWidth: 450,
+            padding: "20px 5px",
+            margin: "0 auto",
+            backgroundColor: "#141519", // Cambia el color de fondo a gris
+          }}
+        >
+          <h1 style={{ textAlign: "center", color: "#2be01f" }}>Add Product</h1>
+          <CardContent>
+            <Box onSubmit={handleSubmit} component="form">
+              <Grid container spacing={1}>
+                <Grid item xs={12}>
+                  <CustomTextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    label="Name"
+                    name="name"
+                    autoComplete="name"
+                    autoFocus
+                    onChange={(e) => setName(e.target.value.toLowerCase())}
+                    value={name}
+                    multiline
+                    maxRows={4}
+                    variant="standard"
+                  />
+                </Grid>
+
+                <Grid item xs={12}>
+                  <CustomTextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    type="number" // Cambio de tipo a "number"
+                    label="Price"
+                    name="price"
+                    autoComplete="price"
+                    autoFocus
+                    onChange={(e) => setPrice(e.target.value)}
+                    value={price}
+                    multiline
+                    maxRows={4}
+                    variant="standard"
+                  />
+                </Grid>
+
+                <Grid item xs={12}>
+                  <CustomTextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    label="Category"
+                    name="category"
+                    autoComplete="category"
+                    autoFocus
+                    onChange={(e) => setCategory(e.target.value)}
+                    value={category}
+                    multiline
+                    maxRows={4}
+                    variant="standard"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <CustomTextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    label="Description"
+                    name="description"
+                    autoComplete="description"
+                    autoFocus
+                    onChange={(e) => setDescription(e.target.value)}
+                    value={description}
+                    multiline
+                    maxRows={4}
+                    variant="standard"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <CustomTextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    label="ImgUrl"
+                    name="imgUrl"
+                    autoComplete="imgUrl"
+                    autoFocus
+                    onChange={(e) => setImgUrl(e.target.value)}
+                    value={imgUrl}
+                    multiline
+                    maxRows={4}
+                    variant="standard"
+                  />
+                </Grid>
+
+                <Grid item xs={12}>
+                  <Button
+                    sx={{
+                      background: "#2be01f",
+                      "&:hover": {
+                        background: "#7200ff",
+                      },
+                    }}
+                    type="submit"
+                    variant="contained"
+                    fullWidth
+                  >
+                    Add
+                  </Button>
+                </Grid>
+              </Grid>
+            </Box>
+          </CardContent>
+        </Card>
+      </Grid>
     </div>
   );
 };
