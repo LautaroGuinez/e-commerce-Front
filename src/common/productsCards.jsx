@@ -4,7 +4,6 @@ import CardContent from "@mui/material/CardContent";
 import { CardActionArea } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
 import { useNavigate } from "react-router";
 
 import Button from "@mui/material/Button";
@@ -36,9 +35,8 @@ const ProductCards = (props) => {
     fetchProduct();
   }, [id]);
 
-  const hadleEdit = () => navigate(`/${id}/edit-product`);
-
-  const handleDelete = async () => {
+  const handleDelete = async (e) => {
+    e.preventDefault();
     try {
       await axios.delete(`http://localhost:3001/api/products/delete/${id}`);
       navigate("/");
@@ -75,7 +73,11 @@ const ProductCards = (props) => {
                 >
                   Edit
                 </Button>
-                <Button onClick={handleDelete} variant="contained">
+                <Button
+                  type="submit"
+                  onClick={handleDelete}
+                  variant="contained"
+                >
                   Delete
                 </Button>
               </div>
