@@ -4,7 +4,9 @@ import CardContent from "@mui/material/CardContent";
 import { CardActionArea } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+
 import { useNavigate } from "react-router";
+
 import Button from "@mui/material/Button";
 import axios from "axios";
 import "../../src/styles/productsCar.css";
@@ -34,6 +36,17 @@ const ProductCards = (props) => {
     fetchProduct();
   }, [id]);
 
+  const hadleEdit = () => navigate(`/${id}/edit-product`);
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`http://localhost:3001/api/products/delete/${id}`);
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div>
       <div className="conteinerProducts">
@@ -62,10 +75,7 @@ const ProductCards = (props) => {
                 >
                   Edit
                 </Button>
-                <Button
-                  onClick={() => handleAddItem({ ...product })}
-                  variant="contained"
-                >
+                <Button onClick={handleDelete} variant="contained">
                   Delete
                 </Button>
               </div>
