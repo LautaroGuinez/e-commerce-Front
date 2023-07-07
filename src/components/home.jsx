@@ -16,9 +16,6 @@ const Home = () => {
   return (
     <>
       <Sidebar />
-      <p>
-        <h2>Productos</h2>
-      </p>
       <Contend product={product} />
     </>
   );
