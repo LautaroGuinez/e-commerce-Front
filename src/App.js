@@ -14,6 +14,7 @@ import Puchease from "./common/puchase";
 import MyAcount from "./common/myAcount";
 import AllUsersView from "./views/allUsersView";
 import AddProductFrom from "./components/addProductForm";
+import Checkout from "./views/checkout";
 
 function App() {
   const dispatch = useDispatch();
@@ -42,7 +43,8 @@ function App() {
         <Route path="/puchease" element={<Puchease />} />
         <Route path="/myAcount" element={<MyAcount />} />
         <Route path="/users" element={<AllUsersView />} />
-        <Route path="/addProduct" element={<AddProductFrom/>} />
+        <Route path="/addProduct" element={<AddProductFrom />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
     </>
   );
