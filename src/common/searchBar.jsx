@@ -63,7 +63,22 @@ const SearchBar = () => {
             id="standard-basic"
             label="Search Item"
             variant="standard"
-            sx={{ width: "300px" }}
+            sx={{
+              marginTop: "35px",
+              width: "500px",
+              "& label": {
+                color: "white",
+              },
+              "& label.Mui-focused": {
+                color: "white",
+              },
+              "& .MuiInput-underline:after": {
+                borderBottomColor: "#2be01f",
+              },
+              "& .MuiInputBase-input": {
+                color: "white",
+              },
+            }}
           />
         </Box>
         <Contend product={product} />

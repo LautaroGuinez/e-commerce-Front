@@ -63,7 +63,6 @@ const ProductCards = (props) => {
           className="card"
           style={{
             borderRadius: "10px",
-            backgroundColor: "gray",
           }}
         >
           <CardActionArea component={Link} to={`/product/${product.id}`}>

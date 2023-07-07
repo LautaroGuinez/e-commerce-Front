@@ -91,11 +91,13 @@ const Sidebar = () => {
           ))}
         </AutoPlaySwipeableViews>
         <MobileStepper
+          sx={{ background: "transparent" }}
           steps={maxSteps}
           position="static"
           activeStep={activeStep}
           nextButton={
             <Button
+              sx={{ color: "#2be01f" }}
               size="small"
               onClick={handleNext}
               disabled={activeStep === maxSteps - 1}
@@ -110,6 +112,7 @@ const Sidebar = () => {
           }
           backButton={
             <Button
+              sx={{ color: "#2be01f" }}
               size="small"
               onClick={handleBack}
               disabled={activeStep === 0}

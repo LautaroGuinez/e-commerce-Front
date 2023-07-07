@@ -7,8 +7,9 @@ import { useNavigate } from "react-router";
 import { Grid } from "@mui/material";
 import { Card, CardContent } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { withStyles } from "@material-ui/core";
 
-const CustomTextField = styled((theme) => ({
+const CustomTextField = withStyles((theme) => ({
   root: {
     "& label": {
       color: "white",
@@ -77,7 +78,7 @@ const Register = () => {
                     margin="normal"
                     required
                     fullWidth
-                    label="Nombre"
+                    label="Name"
                     name="name"
                     autoComplete="name"
                     autoFocus
@@ -90,10 +91,10 @@ const Register = () => {
                 </Grid>
                 <Grid item xs={12}>
                   <CustomTextField
-                    margin="normal"
+                    margin="Lastname"
                     required
                     fullWidth
-                    label="Apellido"
+                    label="Lastname"
                     name="lastname"
                     autoComplete="lastname"
                     autoFocus
@@ -109,7 +110,7 @@ const Register = () => {
                     margin="normal"
                     required
                     fullWidth
-                    label="Correo electronico"
+                    label="Email"
                     name="email"
                     autoComplete="email"
                     autoFocus
@@ -127,7 +128,7 @@ const Register = () => {
                     required
                     fullWidth
                     name="password"
-                    label="Contraseña"
+                    label="Password"
                     type="password"
                     id="password"
                     autoComplete="current-password"

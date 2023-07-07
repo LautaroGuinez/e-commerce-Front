@@ -3,14 +3,14 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 import { setUser } from "../state/user";
 import TextField from "@mui/material/TextField";
-import { styled } from "@mui/material/styles";
+import { withStyles } from "@material-ui/core";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router";
 import { Grid } from "@mui/material";
 import { Card, CardContent } from "@mui/material";
 
-const CustomTextField = styled((theme) => ({
+const CustomTextField = withStyles((theme) => ({
   root: {
     "& label": {
       color: "white",
@@ -85,7 +85,7 @@ const Login = () => {
                     margin="normal"
                     required
                     fullWidth
-                    label="Correo electronico"
+                    label="Email"
                     name="email"
                     autoComplete="email"
                     autoFocus
@@ -103,7 +103,7 @@ const Login = () => {
                     required
                     fullWidth
                     name="password"
-                    label="Contraseña"
+                    label="Password"
                     type="password"
                     id="password"
                     autoComplete="current-password"

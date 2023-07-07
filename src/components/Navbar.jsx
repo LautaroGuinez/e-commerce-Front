@@ -236,14 +236,14 @@ function Navbar() {
                   to={"/register"}
                   component={Link}
                 >
-                  Crear cuenta
+                  Register
                 </MenuItem>
                 <MenuItem
                   onClick={handleMenuClose}
                   to={"/login"}
                   component={Link}
                 >
-                  Acceder
+                  Login
                 </MenuItem>
               </Menu>
             </>

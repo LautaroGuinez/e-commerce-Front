@@ -108,9 +108,32 @@ const Cars = () => {
         </Table>
       ) : (
         <Box>
-          <img src={cart} alt="fd" />
-          <Typography variant="subtitle1">Start a shopping cart!</Typography>
-          <Button component={Link} to="/" variant="contained">
+          <Box
+            sx={{
+              marginTop: "9%",
+            }}
+          >
+            <img src={cart} alt="fd" />
+          </Box>
+
+          <Typography
+            variant="subtitle1"
+            style={{ color: "white", marginTop: "10px" }}
+          >
+            Start a shopping cart!
+          </Typography>
+          <Button
+            sx={{
+              background: "#2be01f",
+              "&:hover": {
+                background: "#7200ff",
+              },
+              marginTop: "15px",
+            }}
+            component={Link}
+            to="/"
+            variant="contained"
+          >
             Home
           </Button>
         </Box>

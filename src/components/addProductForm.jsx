@@ -48,8 +48,8 @@ const AddProductFrom = () => {
           imgUrl,
         }
       );
-      console.log(product);
-      alert(product.name);
+      alert("Product create");
+      navigate("/");
     } catch (error) {
       alert("Error al crear el producto");
     }

@@ -60,7 +60,7 @@ const AllUsersView = () => {
   };
   return (
     <>
-      <TableContainer component={Paper}>
+      <TableContainer>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
@@ -74,7 +74,9 @@ const AllUsersView = () => {
             {allusers.map((user) => (
               <TableRow
                 key={user.name}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                sx={{
+                  "&:last-child td, &:last-child th": { border: 0 },
+                }}
               >
                 <TableCell component="th" scope="row">
                   {user.id}
