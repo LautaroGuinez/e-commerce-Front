@@ -1,26 +1,28 @@
 import React, { useEffect, useState } from "react";
-
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router";
 import axios from "axios";
 
-const AddProductFrom = () => {
+const EditProductForm = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [imgUrl, setImgUrl] = useState("");
+  const [product, setProduct] = useState([]);
+
+  const { id } = useParams();
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     try {
-      const product = await axios.post(
-        "http://localhost:3001/api/products/submit",
+      const editedProduct = await axios.put(
+        `http://localhost:3001/api/products/${id}/edit`,
         {
+          id,
           name,
           price: Number(price),
           category,
@@ -28,12 +30,23 @@ const AddProductFrom = () => {
           imgUrl,
         }
       );
-      console.log(product);
-      alert(product.name);
-    } catch (error) {
-      alert("Error al crear el producto");
-    }
+      alert(`Edit done ${product.name}`);
+      navigate(`/product/${id}`);
+    } catch {}
   };
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const res = await axios.get(`http://localhost:3001/api/products/${id}`);
+        setProduct(res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchProduct();
+  }, [id]);
 
   return (
     <div
@@ -109,7 +122,7 @@ const AddProductFrom = () => {
             style={{ marginLeft: "90px", marginTop: "15px" }}
             variant="contained"
           >
-            Create Product
+            Edit Product
           </Button>
         </div>
       </Box>
@@ -117,4 +130,4 @@ const AddProductFrom = () => {
   );
 };
 
-export default AddProductFrom;
+export default EditProductForm;
