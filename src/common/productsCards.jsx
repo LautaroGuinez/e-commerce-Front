@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { CardActionArea } from "@mui/material";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Button from "@mui/material/Button";
 import axios from "axios";
 import "../../src/styles/productsCar.css";
 import { addToCars } from "../state/cars";
+
+const navigate = useNavigate();
 
 const ProductCards = (props) => {
   const dispatch = useDispatch();
@@ -18,7 +20,6 @@ const ProductCards = (props) => {
     dispatch(addToCars(product));
   };
 
-
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -28,9 +29,11 @@ const ProductCards = (props) => {
         console.error(error);
       }
     };
-  
+
     fetchProduct();
   }, [id]);
+
+  const hadleEdit = () => navigate(`/${id}/edit-product`);
 
   return (
     <div>
@@ -52,6 +55,15 @@ const ProductCards = (props) => {
                   variant="contained"
                 >
                   Add To Car
+                </Button>
+                <Button onClick={hadleEdit} variant="contained">
+                  Edit
+                </Button>
+                <Button
+                  onClick={() => handleAddItem({ ...product })}
+                  variant="contained"
+                >
+                  Delete
                 </Button>
               </div>
             </CardContent>

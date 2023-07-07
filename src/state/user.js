@@ -6,6 +6,8 @@ export const userInitialState = {
   name: null,
   email: null,
   lastname: null,
+  admin: null,
+  super_admin: null,
 };
 
 const reducerUser = createReducer(userInitialState, {
