@@ -7,6 +7,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -123,7 +124,12 @@ const CategoryButton = () => {
             ) {
               uniqueCategories.push(product.category);
               return (
-                <MenuItem disableRipple key={product.id}>
+                <MenuItem
+                  component={Link}
+                  to={`/category/${product.category}`}
+                  disableRipple
+                  key={product.id}
+                >
                   {product.category}
                 </MenuItem>
               );
