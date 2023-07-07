@@ -30,7 +30,7 @@ const AllUsersView = () => {
     const { id } = user;
 
     try {
-      await axios.delete(`http://localhost:3001/api/users/${id}/delete`,user);
+      await axios.delete(`http://localhost:3001/api/users/${id}/delete`, user);
       return setAllUsers(allusers.filter((u) => u.id !== id));
     } catch (error) {
       return alert("Error fetching data:", error);
@@ -89,10 +89,9 @@ const AllUsersView = () => {
                   Make Admin
                 </Button>
                 <Button
-                 type="submit"
+                  type="submit"
                   variant="contained"
                   align="right"
-                  type="submit"
                   onClick={() => handleDelete(user)}
                 >
                   Delete
