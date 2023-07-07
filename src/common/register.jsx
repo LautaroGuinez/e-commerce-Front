@@ -1,10 +1,29 @@
 import React, { useState } from "react";
-
-import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import axios from "axios";
+import { withStyles } from "@material-ui/core/styles";
+import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router";
-import axios from "axios";
+import { Grid } from "@mui/material";
+import { Card, CardContent } from "@mui/material";
+
+const CustomTextField = withStyles((theme) => ({
+  root: {
+    "& label": {
+      color: "white",
+    },
+    "& label.Mui-focused": {
+      color: "white",
+    },
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "#2be01f",
+    },
+    "& .MuiInputBase-input": {
+      color: "white",
+    },
+  },
+}))(TextField);
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -40,65 +59,104 @@ const Register = () => {
         height: "80vh",
       }}
     >
-      <Box
-        onSubmit={handleSubmit}
-        component="form"
-        sx={{
-          "& .MuiTextField-root": { m: 1, width: "30ch" },
-        }}
-        noValidate
-        autoComplete="off"
-      >
-        <div>
-          <TextField
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-            id="outlined-required"
-            label="Name"
-            defaultValue=""
-          />
-        </div>
-        <div>
-          <TextField
-            value={lastname}
-            onChange={(e) => setLastname(e.target.value)}
-            required
-            id="outlined-required"
-            label="Last Name"
-            defaultValue=""
-          />
-        </div>
-        <div>
-          <TextField
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            id="outlined-required"
-            label="Email"
-            defaultValue=""
-          />
-        </div>
-        <div>
-          <TextField
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            id="outlined-password-input"
-            label="Password"
-            type="password"
-            autoComplete="current-password"
-          />
-        </div>
-        <div>
-          <Button
-            type="submit"
-            style={{ marginLeft: "90px", marginTop: "15px" }}
-            variant="contained"
-          >
-            Register
-          </Button>
-        </div>
-      </Box>
+      <Grid container>
+        <Card
+          style={{
+            maxWidth: 450,
+            padding: "20px 5px",
+            margin: "0 auto",
+            backgroundColor: "#141519", // Cambia el color de fondo a gris
+          }}
+        >
+          <h1 style={{ textAlign: "center", color: "#2be01f" }}>Register</h1>
+          <CardContent>
+            <Box onSubmit={handleSubmit} component="form">
+              <Grid container spacing={1}>
+                <Grid item xs={12}>
+                  <CustomTextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    label="Nombre"
+                    name="name"
+                    autoComplete="name"
+                    autoFocus
+                    onChange={(e) => setName(e.target.value)}
+                    value={name}
+                    multiline
+                    maxRows={4}
+                    variant="standard"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <CustomTextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    label="Apellido"
+                    name="lastname"
+                    autoComplete="lastname"
+                    autoFocus
+                    onChange={(e) => setLastname(e.target.value)}
+                    value={lastname}
+                    multiline
+                    maxRows={4}
+                    variant="standard"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <CustomTextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    label="Correo electronico"
+                    name="email"
+                    autoComplete="email"
+                    autoFocus
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    multiline
+                    maxRows={4}
+                    variant="standard"
+                  />
+                </Grid>
+
+                <Grid item xs={12}>
+                  <CustomTextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    name="password"
+                    label="Contraseña"
+                    type="password"
+                    id="password"
+                    autoComplete="current-password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                    maxRows={4}
+                    variant="standard"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Button
+                    sx={{
+                      background: "#2be01f",
+                      "&:hover": {
+                        background: "#7200ff",
+                      },
+                    }}
+                    type="submit"
+                    variant="contained"
+                    fullWidth
+                  >
+                    Register
+                  </Button>
+                </Grid>
+              </Grid>
+            </Box>
+          </CardContent>
+        </Card>
+      </Grid>
     </div>
   );
 };

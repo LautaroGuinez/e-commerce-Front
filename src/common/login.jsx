@@ -1,15 +1,31 @@
 import React, { useState } from "react";
-
-import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import axios from "axios";
-
 import { setUser } from "../state/user";
-
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import { withStyles } from "@material-ui/core/styles";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import { useNavigate } from "react-router";
+import { Grid } from "@mui/material";
+import { Card, CardContent } from "@mui/material";
+
+const CustomTextField = withStyles((theme) => ({
+  root: {
+    "& label": {
+      color: "white",
+    },
+    "& label.Mui-focused": {
+      color: "white",
+    },
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "#2be01f",
+    },
+    "& .MuiInputBase-input": {
+      color: "white",
+    },
+  },
+}))(TextField);
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -51,37 +67,72 @@ const Login = () => {
         height: "80vh",
       }}
     >
-      <form onSubmit={handleLoginSubmit}>
-        <Stack spacing={2} direction="row">
-          <Box>
-            <div>
-              <TextField
-                value={loginEmail}
-                onChange={(e) => setLoginEmail(e.target.value)}
-                required
-                id="outlined-required"
-                label="Email"
-                defaultValue=""
-              />
-            </div>
-            <br />
-            <div>
-              <TextField
-                value={loginPassword}
-                onChange={(e) => setLoginPassword(e.target.value)}
-                required
-                id="outlined-required"
-                label="Password"
-                defaultValue=""
-                type="password"
-              />
-            </div>
-          </Box>
-          <Button type="submit" variant="contained">
-            LOGIN
-          </Button>
-        </Stack>
-      </form>
+      <Grid container>
+        <Card
+          style={{
+            maxWidth: 450,
+            padding: "20px 5px",
+            margin: "0 auto",
+            backgroundColor: "#141519", // Cambia el color de fondo a gris
+          }}
+        >
+          <h1 style={{ textAlign: "center", color: "#2be01f" }}>Login</h1>
+          <CardContent>
+            <Box onSubmit={handleLoginSubmit} component="form">
+              <Grid container spacing={1}>
+                <Grid item xs={12}>
+                  <CustomTextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    label="Correo electronico"
+                    name="email"
+                    autoComplete="email"
+                    autoFocus
+                    onChange={(e) => setLoginEmail(e.target.value)}
+                    value={loginEmail}
+                    multiline
+                    maxRows={4}
+                    variant="standard"
+                  />
+                </Grid>
+
+                <Grid item xs={12}>
+                  <CustomTextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    name="password"
+                    label="Contraseña"
+                    type="password"
+                    id="password"
+                    autoComplete="current-password"
+                    onChange={(e) => setLoginPassword(e.target.value)}
+                    value={loginPassword}
+                    maxRows={4}
+                    variant="standard"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Button
+                    sx={{
+                      background: "#2be01f",
+                      "&:hover": {
+                        background: "#7200ff",
+                      },
+                    }}
+                    type="submit"
+                    variant="contained"
+                    fullWidth
+                  >
+                    Login
+                  </Button>
+                </Grid>
+              </Grid>
+            </Box>
+          </CardContent>
+        </Card>
+      </Grid>
     </div>
   );
 };
