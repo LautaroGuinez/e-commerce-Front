@@ -31,7 +31,7 @@ const StyledMenu = styled((props) => (
       theme.palette.mode === "light"
         ? "rgb(55, 65, 81)"
         : theme.palette.grey[300],
-    backgroundColor: "#23252b",
+    backgroundColor: "black",
     boxShadow:
       "rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px",
     "& .MuiMenu-list": {
@@ -55,7 +55,7 @@ const StyledMenu = styled((props) => (
           theme.palette.action.selectedOpacity
         ), // Cambia el fondo a transparente cuando se hace clic
       },
-      color: "white",
+      color: "#2be01f",
     },
   },
 }));
@@ -91,9 +91,9 @@ const CategoryButton = () => {
     <div>
       <Button
         sx={{
-          background: "#23252b",
+          background: "transparent",
           "&:hover": {
-            background: "  #2be01f ",
+            background: "#2be01f",
           },
         }}
         id="demo-customized-button"
